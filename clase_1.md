@@ -152,10 +152,40 @@ Una **función booleana** toma variables booleanas y produce valores booleanos.
 Cuatro funciones booleanas son especialmente comunes.
 
 - La función **O booleana** (inclusiva) de dos variables *(A OR B o A O B)*. Esta función se escribe **+** *(por ejemplo, X + Y donde X e Y son variables booleanas)* y a menudo se denomina suma lógica. Cuando escribimos 0 para falso y 1 para verdadero, tres de los cuatro valores de salida en la tabla de verdad son los mismos que el resultado de una suma normal *(matemática)*.
+
+    | A | B |	A + B |
+    |:---:|:---:|:---:|
+    | 0	| 0	| 0 |
+    | 0	| 1 | 1 |
+    | 1	| 0	| 1 |
+    | 1	| 1 | 1 |
+
 - La función **Y booleana**, a menudo se denomina producto lógico y se escribe como un punto centrado *(como el producto normal en álgebra regular)*. Se escribe A·B para A AND B. Los cuatro valores de la tabla de verdad son los mismos para el producto lógico que para el producto normal (matemático).
+
+    | A | B |	A · B |
+    |:---:|:---:|:---:|
+    | 0	| 0	| 0 |
+    | 0	| 1 | 0 |
+    | 1	| 0	| 0 |
+    | 1	| 1 | 1 |
+
 - La función **NO** o NOT: Este es un operador unario *(es decir, tiene solo un argumento, no dos como los casos precedentes; las funciones con dos entradas se denominan operadores binarios)*. La negación de A se escribe con una barra encima Ā, pero se puede escribir de la siguiente forma: A'.
+
+    | A | Ā |
+    |:---:|:---:|
+    | 0	| 1 |
+    | 1	| 0 |
+
+
 - La función **O exclusiva (XOR)**. XOR se escribe con ⊕ *(un + con un círculo alrededor)*. A ⊕ B es verdadero si exactamente una entrada es verdadera.
 
+
+    | A | B |	A ⊕ B |
+    |:---:|:---:|:---:|
+    | 0	| 0	| 0 |
+    | 0	| 1 | 1 |
+    | 1	| 0	| 1 |
+    | 1	| 1 | 0 |
 
 https://cs.nyu.edu/courses/fall17/CSCI-UA.0436-001/class-notes.html
 
