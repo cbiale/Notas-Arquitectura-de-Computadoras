@@ -38,7 +38,7 @@ Para resumir, usaremos solo dos voltajes: **alto** y **bajo**. Una señal de alt
 
 La suposición de que en cualquier momento todas las señales son 1 o 0 esconde una gran cantidad de ingeniería. Las ondas no son realmente cuadradas, pero como esto no es un curso de ingeniería, ignoraremos estos problemas y asumiremos ondas cuadradas.
 
-![](ondas.png)
+![](./figuras/ondas.png)
 
 Figura 1: Ejemplo de ondas cuadradas
 
@@ -55,3 +55,23 @@ Se puede pensar en un bloque lógico como una caja negra que recibe señales el�
 2- **Secuencial**: Contiene memoria. El valor actual en la memoria se llama estado del bloque. La salida depende de la entrada Y del estado. Consideren, por ejemplo, leer una memoria RAM. Hay dos entradas: la dirección de memoria y la operación *(lectura vs escritura)*. Ciertamente, leer la ubicación 1011001 el lunes no necesariamente da el mismo resultado que leer la misma ubicación el martes.
 
 Primero estudiaremos **bloques combinacionales** y luego estudiaremos **bloques secuenciales**. 
+
+## Tablas de verdad
+
+Dado que la lógica combinatoria o combinacional no tiene memoria, es simplemente una función *(matemática)* de sus entradas a sus salidas.
+
+Una forma común de representar una función es usar una tabla de verdad. Una tabla de verdad tiene una columna para cada entrada y una columna para cada salida. Tiene una fila para cada posible conjunto de valores de entrada. 
+
+Entonces, si hay **N** entradas , hay **2N** filas. En cada una de estas filas, las columnas de salida tienen la salida para esa entrada.
+
+*Pregunta: porque si hay N entradas voy a tener 2N filas*.
+
+Una tabla de este tipo es posible solo porque hay solamente un número finito de valores de entrada posibles. Consideren intentar producir una tabla para la función matemática:
+
+```
+  y = f(x) = x^3 + 6x^2 - 12x - 3.5
+```
+
+Solo habría dos columnas *(una para x y otra para y)*, ¡pero sería necesario que hubiera un número infinito de filas!
+
+
