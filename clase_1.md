@@ -7,8 +7,6 @@
 - Ayudante de Primera: Viviana María Arenhardt (Ensamblador usando RISC-V)
 - Ayudante de Segunda: Melissa Kolb (Ensamblador usando RISC-V)
 
---------------------------------------------------------
-
 ## Libro de Referencia
 
 El libro de referencia es: **Computer Organization and Design: The Hardware/Software Interface, RISC-V edition** de *Hennessy* y *Patterson*.
@@ -16,8 +14,6 @@ El libro de referencia es: **Computer Organization and Design: The Hardware/Soft
 El cuerpo principal del libro asume que han tenido un curso completo de diseño lógico. **:)**
 
 No es nuestro caso, por ello comenzaremos con el apéndice B, que realiza una revisión sobre diseño lógico o lógica digital.
-
---------------------------------------------------------
 
 ## Lógica digital
 
@@ -60,17 +56,15 @@ Se puede pensar en un bloque lógico como una caja negra que recibe señales el�
 
 Primero estudiaremos **bloques combinacionales** y luego estudiaremos **bloques secuenciales**. 
 
---------------------------------------------------------
-
 ## Tablas de verdad
 
 Dado que la lógica combinatoria o combinacional no tiene memoria, es simplemente una función *(matemática)* de sus entradas a sus salidas.
 
 Una forma común de representar una función es usar una tabla de verdad. Una tabla de verdad tiene una columna para cada entrada y una columna para cada salida. Tiene una fila para cada posible conjunto de valores de entrada. 
 
-Entonces, si hay **N** entradas , hay **2N** filas. En cada una de estas filas, las columnas de salida tienen la salida para esa entrada.
+Entonces, si hay **N** entradas , hay **2^N** filas. En cada una de estas filas, las columnas de salida tienen la salida para esa entrada.
 
-*Pregunta: porque si hay N entradas voy a tener 2N filas*.
+*Pregunta: porque si hay N entradas voy a tener 2^N filas*.
 
 Una tabla de este tipo es posible solo porque hay solamente un número finito de valores de entrada posibles. Consideren intentar producir una tabla para la función matemática:
 
@@ -142,8 +136,6 @@ Tabla 2: Tabla de verdad de 2 entradas y 1 salida.
 - n * k signos de interrogación.
 - 2 ^ (2 n * k) posibilidades.
 
---------------------------------------------------------
-
 ## Álgebra de Boole
 
 Vamos a usar una notación que se parece al álgebra para expresar funciones lógicas y expresiones que las involucran.
@@ -157,5 +149,16 @@ Una **variable booleana** toma valores booleanos.
 Una **función booleana** toma variables booleanas y produce valores booleanos.
 
 
+Cuatro funciones booleanas son especialmente comunes.
+
+- La función **O booleana** (inclusiva) de dos variables *(A OR B o A O B)*. Esta función se escribe **+** *(por ejemplo, X + Y donde X e Y son variables booleanas)* y a menudo se denomina suma lógica. Cuando escribimos 0 para falso y 1 para verdadero, tres de los cuatro valores de salida en la tabla de verdad son los mismos que el resultado de una suma normal *(matemática)*.
+- La función **Y booleana**, a menudo se denomina producto lógico y se escribe como un punto centrado *(como el producto normal en álgebra regular)*. Se escribe A·B para A AND B. Los cuatro valores de la tabla de verdad son los mismos para el producto lógico que para el producto normal (matemático).
+- La función **NO** o NOT: Este es un operador unario *(es decir, tiene solo un argumento, no dos como los casos precedentes; las funciones con dos entradas se denominan operadores binarios)*. La negación de A se escribe con una barra encima Ā, pero se puede escribir de la siguiente forma: A'.
+- La función **O exclusiva (XOR)**. XOR se escribe con ⊕ *(un + con un círculo alrededor)*. A ⊕ B es verdadero si exactamente una entrada es verdadera.
+
+
 https://cs.nyu.edu/courses/fall17/CSCI-UA.0436-001/class-notes.html
 
+https://www.ics.uci.edu/~swjun/courses/2019W-CS152/material/lec4%20-%20Circuits.pdf
+
+http://users.ece.cmu.edu/~jhoe/doku/doku.php?id=18-447_course_schedule_spring_2020
