@@ -187,6 +187,61 @@ Cuatro funciones booleanas son especialmente comunes.
     | 1	| 0	| 1 |
     | 1	| 1 | 0 |
 
+
+### Algunas leyes de manipulación
+
+
+- Identidad:
+    ```
+    A + 0 = 0 + A = A
+    A · 1 = 1 · A = A
+    ```
+
+- Inverso (recuerde que uso 'para no):
+    ```
+    A + A '= A' + A = 1  // (NO tiene la prioridad más alta)
+    A · A' = A' · A = 0
+    ```
+
+  Probar: Si **suma** el inverso, obtiene la identidad del **producto**. 
+  Si **multiplica** por el inverso, obtiene la identidad de la **suma**.
+
+- Leyes conmutativas:
+    ```
+    A + B = B + A
+    A · B = B · A
+    ```
+    Debido a las leyes conmutativas, vemos que tanto la identidad como la inversa contenían redundancia. Por ejemplo, de A + 0 = A y la ley conmutativa obtenemos que 0 + A = A sin indicar esto último explícitamente.
+    
+- Leyes asociativas:
+    ```
+    A + (B + C) = (A + B) + C
+    A · (B · C) = (A · B) · C
+    ```
+    Debido a la ley asociativa, podemos escribir A · B · C sin paréntesis ya que cualquier orden de evaluación da la misma respuesta. De manera similar, podemos escribir A + B + C sin paréntesis.
+    
+- Leyes distributivas:
+    ```
+    A · (B + C) = A · B + A · C
+    ```
+    Tenga en cuenta también que, como ocurre con el álgebra ordinaria, la multiplicación tiene mayor precedencia que la suma si no se utilizan paréntesis.
+    
+    ```
+    A + B · C = A + (B · C) = (A + B) · (A + C)
+    ```
+    Tenga en cuenta que, a diferencia de la situación del álgebra ordinaria, ambas leyes distributivas son válidas.
+
+- Leyes de DeMorgan:
+    ```
+    (A + B) '= A'B'
+    (AB) '= A' + B'
+    ```
+
+¿Cómo se prueban estas leyes?
+
+Respuesta: Es simple, pero tedioso.
+
+
 https://cs.nyu.edu/courses/fall17/CSCI-UA.0436-001/class-notes.html
 
 https://www.ics.uci.edu/~swjun/courses/2019W-CS152/material/lec4%20-%20Circuits.pdf
