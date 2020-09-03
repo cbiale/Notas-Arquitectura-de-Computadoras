@@ -4,7 +4,7 @@
 
 - Adjunto: Claudio Omar Biale (Teoría y lógica digital)
 - Jefe de Trabajos Prácticos: Roberto Anibal Miño (Lógica digital)
-- Ayudante de Primera: Viviana Arenhatch (Ensamblador usando RISC-V)
+- Ayudante de Primera: Viviana María Arenhardt (Ensamblador usando RISC-V)
 - Ayudante de Segunda: Melissa Kolb (Ensamblador usando RISC-V)
 
 ## Libro de Referencia
@@ -74,4 +74,29 @@ Una tabla de este tipo es posible solo porque hay solamente un número finito de
 
 Solo habría dos columnas *(una para x y otra para y)*, ¡pero sería necesario que hubiera un número infinito de filas!
 
+
+### Un juego de números: ¿cuántas tablas de verdad posibles hay?
+
+Comencemos con una tabla de verdad realmente simple, una correspondiente a un bloque lógico con una entrada y una salida.
+
+¿Cuántas tablas de verdad diferentes existen para un bloque lógico de "una entrada y una salida" ?
+
+Hay dos columnas *(1 entrada + 1 salida)* y dos filas *(2^1)*. Por lo tanto, la tabla de verdad se parece a la siguiente con los signos de interrogación completados.
+
+
+| Entrada |	Salida |
+|:---:|:---:|
+| 0	| ? |
+| 1 | ? |
+
+Tabla 1: Tabla de verdad de 1 entrada y 1 salida.
+
+Como hay dos signos de interrogación y cada uno puede tener uno de dos valores, solo hay 2 * 2 = 4 tablas de verdad posibles. Las mismas son:
+
+1. La función constante 1, que tiene salida 1 *(es decir, verdadera)* para cualquier valor de entrada.
+2. La función constante 0.
+3. La función de identidad, es decir, la función cuya salida es igual a su entrada. Este bloque lógico a veces se denomina búfer.
+4. Un inversor. Esta función tiene una salida opuesta a la entrada.
+
+Muy pronto veremos símbolos para las dos últimas posibilidades.
 
