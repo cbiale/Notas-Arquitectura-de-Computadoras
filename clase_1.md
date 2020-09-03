@@ -231,15 +231,15 @@ Cuatro funciones booleanas son especialmente comunes.
     ```
     Tenga en cuenta que, a diferencia de la situación del álgebra ordinaria, ambas leyes distributivas son válidas.
 
-- Leyes de DeMorgan:
+- Leyes de DeMorgan *(que observan erróneo)*:
     ```
     (A + B) '= A'B'
     (AB) '= A' + B'
     ```
 
-¿Cómo se prueban estas leyes?
+**Pregunta**: ¿Cómo se prueban estas leyes?
 
-Respuesta: Es simple, pero tedioso.
+**Respuesta**: Es simple, pero tedioso.
 
 
 https://cs.nyu.edu/courses/fall17/CSCI-UA.0436-001/class-notes.html
