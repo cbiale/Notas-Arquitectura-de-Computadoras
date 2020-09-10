@@ -33,7 +33,7 @@ Si no funciona, deben instalar `java` previamente.
 
 ## Puertas, tablas de verdad y ecuaciones lógicas
 
-*Tip: usamos de forma indistinta el nombre puertas o compuertas*
+> *Tip: usamos de forma indistinta el nombre puertas o compuertas*
 
 La palabra digital, cuando se usa en lógica digital significa discreto. Es decir, los valores eléctricos *(por ejemplo, voltajes)* de las señales en un circuito se tratan como números enteros *(normalmente solo 0 y 1)*. 
 
