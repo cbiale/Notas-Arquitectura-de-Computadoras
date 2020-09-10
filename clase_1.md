@@ -15,9 +15,14 @@ El cuerpo principal del libro asume que han tenido un curso completo de diseño 
 
 No es nuestro caso, por ello comenzaremos con el apéndice B, que realiza una revisión sobre diseño lógico o lógica digital.
 
+
+## Consideraciones
+
+Las presentaciones o apuntes no reemplazan a la bibliografía de la asignatura.
+
 ## Lógica digital
 
-**Tarea**: deben descargar el simulador de lógica digital denominado **logisim-evolution** *(lo encuentran en el aula virtual)* y jugar con él. El botón de ayuda ofrece un tutorial, léanlo.
+**Tarea *(Por si no realizaron la tarea solicitada previamente)***: deben descargar el simulador de lógica digital denominado **logisim-evolution** *(lo encuentran en el aula virtual)* y jugar con él. El botón de ayuda ofrece un tutorial, léanlo.
 
 Ejecutar logisim *(asumo se encuentran en el directorio donde descargaron el archivo)*:
 ```
@@ -62,9 +67,9 @@ Dado que la lógica combinatoria o combinacional no tiene memoria, es simplement
 
 Una forma común de representar una función es usar una tabla de verdad. Una tabla de verdad tiene una columna para cada entrada y una columna para cada salida. Tiene una fila para cada posible conjunto de valores de entrada. 
 
-Entonces, si hay **N** entradas , hay **2^N** filas. En cada una de estas filas, las columnas de salida tienen la salida para esa entrada.
+Entonces, si hay **N** entradas , hay **2<sup>n</sup>** filas. En cada una de estas filas, las columnas de salida tienen la salida para esa entrada.
 
-*Pregunta: porque si hay N entradas voy a tener 2^N filas*.
+*Pregunta: porque si hay N entradas voy a tener 2<sup>n</sup> filas*.
 
 Una tabla de este tipo es posible solo porque hay solamente un número finito de valores de entrada posibles. Consideren intentar producir una tabla para la función matemática:
 
@@ -81,7 +86,7 @@ Comencemos con una tabla de verdad realmente simple, una correspondiente a un bl
 
 ¿Cuántas tablas de verdad diferentes existen para un bloque lógico de "una entrada y una salida" ?
 
-Hay dos columnas *(1 entrada + 1 salida)* y dos filas *(2^1)*. Por lo tanto, la tabla de verdad se parece a la siguiente con los signos de interrogación completados.
+Hay dos columnas *(1 entrada + 1 salida)* y dos filas *(2<sup>1</sup>)*. Por lo tanto, la tabla de verdad se parece a la siguiente con los signos de interrogación completados.
 
 
 | Entrada |	Salida |
@@ -100,9 +105,9 @@ Como hay dos signos de interrogación y cada uno puede tener uno de dos valores,
 
 Muy pronto veremos símbolos para las dos últimas posibilidades.
 
-**Tablas de verdad de 2 entradas y 1 salida**: Tres columnas *(2 + 1)* y 4 filas *(2 ^ 2)*.
+**Tablas de verdad de 2 entradas y 1 salida**: Tres columnas *(2 + 1)* y 4 filas *(2 <sup>2</sup>)*.
 
-¿Cuántas tablas de verdad existen? Es solo el número de formas en que puede completar las entradas de salida, es decir, los signos de interrogación. Hay 4 entradas de salida, por lo que la respuesta es 2 ^ 4 = 16.
+¿Cuántas tablas de verdad existen? Es solo el número de formas en que puede completar las salidas, es decir, los signos de interrogación. Hay 4 salidas, por lo que la respuesta es 2 <sup>4</sup> = 16.
 
 | Entrada 1 | Entrada 2 |	Salida |
 |:---:|:---:|:---:|
@@ -118,23 +123,23 @@ Tabla 2: Tabla de verdad de 2 entradas y 1 salida.
 ¿Qué tal 2 entradas y 3 salidas?
 
 - 2 + 3 = 5 columnas *(3 de ellas columnas de salida, donde aparecen los signos de interrogación)*.
-- 2 ^ 2 = 4 filas.
+- 2 <sup>2</sup> = 4 filas.
 - 4 * 3 = 12 signos de interrogación.
-- 2 ^ 12 = 4096 posibilidades.
+- 2 <sup>12</sup> = 4096 posibilidades.
 
 ¿3 entradas y 7 salidas?
 
 - 10 columnas *(3 de entrada y 7 de salida)*.
-- 2 ^ 3 = 8 filas.
+- 2 <sup>3</sup> = 8 filas.
 - 8 * 7 = 56 signos de interrogación.
-- 2 ^ 56 posibilidades.
+- 2 <sup>56</sup> posibilidades.
 
 ¿n entradas y k salidas?
 
 - n + k columnas.
-- 2 ^ n filas.
+- 2 <sup>n</sup> filas.
 - n * k signos de interrogación.
-- 2 ^ (2 n * k) posibilidades.
+- 2 <sup>(2 <sup>n</sup> * k)</sup> posibilidades.
 
 ## Álgebra de Boole
 
@@ -142,16 +147,26 @@ Vamos a usar una notación que se parece al álgebra para expresar funciones ló
 
 La notación se llama **álgebra booleana** en honor a **George Boole**.
 
+La circuitería digital se diseña y se analiza con el uso esta disciplina matemática.
+
 Un **valor booleano** es un 1 o un 0.
 
 Una **variable booleana** toma valores booleanos.
 
 Una **función booleana** toma variables booleanas y produce valores booleanos.
 
+### Utilidad
+
+- **Análisis**: forma concisa de describir el funcionamiento de los circuitos digitales.
+
+- **Diseño**: dada una función deseada, se aplica el álgebra para desarrollar una implementación de complejidad simplificada de esta función.
+
+### Funciones booleanas
 
 Cuatro funciones booleanas son especialmente comunes.
 
 - La función **O booleana** (inclusiva) de dos variables *(A OR B o A O B)*. Esta función se escribe **+** *(por ejemplo, X + Y donde X e Y son variables booleanas)* y a menudo se denomina suma lógica. Cuando escribimos 0 para falso y 1 para verdadero, tres de los cuatro valores de salida en la tabla de verdad son los mismos que el resultado de una suma normal *(matemática)*.
+Se puede usar la siguientes alternativas de notación: **+**, **∨** , **∪**.
 
     | A | B |	A + B |
     |:---:|:---:|:---:|
@@ -161,7 +176,7 @@ Cuatro funciones booleanas son especialmente comunes.
     | 1	| 1 | 1 |
 
 - La función **Y booleana**, a menudo se denomina producto lógico y se escribe como un punto centrado *(como el producto normal en álgebra regular)*. Se escribe A·B para A AND B. Los cuatro valores de la tabla de verdad son los mismos para el producto lógico que para el producto normal (matemático).
-
+Se puede usar la siguientes alternativas de notación: **·**, **∧** , **∩**.
     | A | B |	A · B |
     |:---:|:---:|:---:|
     | 0	| 0	| 0 |
@@ -193,13 +208,13 @@ Cuatro funciones booleanas son especialmente comunes.
 
 - Identidad:
     ```
-    A + 0 = 0 + A = A
+    Axsds + 0 = 0 + A = A
     A · 1 = 1 · A = A
     ```
 
-- Inverso (recuerde que uso 'para no):
+- Inverso:
     ```
-    A + A '= A' + A = 1  // (NO tiene la prioridad más alta)
+    A + A' = A' + A = 1  // (NO tiene la prioridad más alta)
     A · A' = A' · A = 0
     ```
 
@@ -211,7 +226,9 @@ Cuatro funciones booleanas son especialmente comunes.
     A + B = B + A
     A · B = B · A
     ```
-    Debido a las leyes conmutativas, vemos que tanto la identidad como la inversa contenían redundancia. Por ejemplo, de A + 0 = A y la ley conmutativa obtenemos que 0 + A = A sin indicar esto último explícitamente.
+    Debido a las leyes conmutativas, vemos que tanto la identidad como la inversa contenían redundancia. 
+    
+    Por ejemplo, de A + 0 = A y la ley conmutativa obtenemos que 0 + A = A sin indicar esto último explícitamente.
     
 - Leyes asociativas:
     ```
@@ -240,6 +257,138 @@ Cuatro funciones booleanas son especialmente comunes.
 **Pregunta**: ¿Cómo se prueban estas leyes?
 
 **Respuesta**: Es simple, pero tedioso.
+
+### Compuertas o Puertas
+
+**Definición**: Dispositivo que implementa funciones lógicas básicas, como Y *(AND)* u O *(OR)*.
+
+Los bloques lógicos se construyen a partir de puertas que implementan funciones lógicas básicas.
+
+Por ejemplo, una puerta **AND** implementa la función **AND** y una puerta **OR** implementa la función **OR**. 
+
+Dado que tanto **AND** como **OR** son conmutativos y asociativos, una compuerta **AND** u **OR** puede tener múltiples entradas, con la salida igual a **AND** u **OR** de todas las entradas.
+
+La función lógica **NOT** se implementa con un inversor que siempre tiene una sola entrada.
+
+![](./figuras/puertas.png)
+
+Figura 2: Ejemplo de puertas AND, OR y NOT
+
+En lugar de dibujar inversores explícitamente, una práctica común es agregar **"burbujas"** a las entradas o salidas de una compuerta para hacer que el valor lógico en esa línea de entrada o línea de salida se invierta.
+
+
+![](./figuras/burbujas.png)
+
+Figura 3: Implementación de puerta lógica de (A' + B)' usando inversiones explícitas a la izquierda y entradas y salidas burbujeadas a la derecha.
+
+Cualquier función lógica se puede construir usando compuertas **AND**, compuertas **OR** e compuertas de inversión **NOT**.
+
+Todas las funciones lógicas se pueden construir con un solo tipo de compuerta, si esa compuerta está invirtiendo. Las dos compuertas de inversión comunes se denominan **NOR** y **NAND** y corresponden a las compuertas **OR** y **AND** invertidas, respectivamente. 
+
+Las compuertas **NOR** y **NAND** se denominan universales, ya que cualquier función lógica se puede construir utilizando este tipo de puerta.
+
+Las tablas de verdad son:
+
+| A | B |	(A · B)' |
+|:---:|:---:|:---:|
+| 0	| 0	| 1 |
+| 0	| 1 | 1 |
+| 1	| 0	| 1 |
+| 1	| 1 | 0 |
+
+
+| A | B |	(A + B)' |
+|:---:|:---:|:---:|
+| 0	| 0	| 1 |
+| 0	| 1 | 0 |
+| 1	| 0	| 0 |
+| 1	| 1 | 0 |
+
+De igual forma se puede implementar un **NXOR**, cuya tabla de verdad es:
+
+| A | B | (A ⊕ B)' |
+|:---:|:---:|:---:|
+| 0	| 0	| 1 |
+| 0	| 1 | 0 |
+| 1	| 0	| 0 |
+| 1	| 1 | 1 |
+
+### Tarea 2
+
+Ejercicios....
+
+Comprobaciones
+
+
+## Lógica combinacional
+
+### Decodificadores (y codificadores)
+
+**Decodificador**: bloque lógico que tiene una entrada de *n* bits y *2<sup>n</sup>* salidas, donde solo se afirma *(valor verdadero)* una salida para cada combinación de entrada.
+
+Este tipo de decodificador traduce la entrada de *n* bits en una señal que se corresponde al valor binario de la entrada de *n* bits.
+
+Por lo tanto, las salidas suelen estar numeradas en el siguiente formato: S0, S1, ..., S2<sup>n</sup>−1. Si el valor de la entrada es *i*, entonces **Si** será verdadero y todas las demás salidas serán falsas.
+
+La tabla de verdad de un decodificador de 1 a 2 es la siguiente:
+
+| A | S0 |	S1 |
+|:---:|:---:|:---:|
+| 0	| 1	| 0 |
+| 1	| 0	| 1 |
+
+La tabla de verdad de un decodificador de 2 a 4 es la siguiente:
+
+| A1 | A0 | S0 | S1 | S2 | S3 |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| 0	| 0	| 1	| 0 | 0 | 0 |
+| 0	| 1	| 0	| 1 | 0 | 0 |
+| 1	| 0	| 0	| 0 | 1 | 0 |
+| 1	| 1	| 0	| 0 | 0 | 1 |
+
+
+
+### Multiplexores
+
+
+### Lógica de dos niveles: PLA (y PAL)
+
+### ROM
+
+### Matrices de elementos lógicos
+
+### Bus
+
+
+
+
+
+-----------
+
+### Obtener funciones lógicas 
+
+Examine la columna de la tabla de verdad para una salida dada y escriba un término para cada entrada que sea un 1. Este método requiere la construcción de la tabla de verdad.
+
+La primera forma en que producimos la ecuación lógica muestra que cualquier ecuación lógica se puede escribir usando solo Y, O y NO. De hecho, muestra más. Cada entrada en la columna de salida de la tabla de verdad corresponde al AND de varios literales (en este caso, tres literales, porque hay tres entradas).
+
+Un literal es una variable de entrada o la negación de una variable de entrada.
+
+En lógica matemática, se dice que dicha fórmula está en "forma normal disyuntiva" porque es la disyunción (es decir, OR) de conjunciones (es decir, AND).
+
+En la arquitectura de computadora, la forma normal disyuntiva a menudo se llama dos niveles de lógica porque muestra que cualquier fórmula de este tipo se puede calcular pasando señales a través de solo dos funciones lógicas, Y y luego O (suponiendo que se nos den las entradas y sus complementos).
+
+Primero calcule todos los AND. Puede haber muchos, muchos de estos, pero todos se pueden calcular a la vez utilizando muchas, muchas puertas AND.
+
+Calcule los OR requeridos de los AND calculados en el paso 1. Sólo hay un OR para cada variable de salida, pero ese OR puede tener muchas entradas.
+
+
+miniterminos
+maxiterminos
+simplificacion
+descarte de valores
+
+*Existe una forma adicional, que consiste en 
+mirar la definición de D, E y F y "descúbrirla".*
 
 
 https://cs.nyu.edu/courses/fall17/CSCI-UA.0436-001/class-notes.html
