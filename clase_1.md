@@ -13,7 +13,7 @@ El libro de referencia es: **Computer Organization and Design: The Hardware/Soft
 
 El cuerpo principal del libro asume que han tenido un curso completo de diseño lógico. **:)**
 
-No es nuestro caso, por ello comenzaremos con el apéndice B, que realiza una revisión sobre diseño lógico o lógica digital.
+No es nuestro caso, por ello comenzaremos con el apéndice A, que realiza una revisión sobre diseño lógico o lógica digital.
 
 
 ## Consideraciones
@@ -253,8 +253,8 @@ Se puede usar la siguientes alternativas de notación: **·**, **∧** , **∩**
 
 - Leyes de DeMorgan *(que observan erróneo)*:
     ```
-    (A + B) '= A'B'
-    (AB) '= A' + B'
+    (A + B)' = A'B'
+    (AB)' = A' + B'
     ```
 - Ley de elementos nulos:
 
@@ -332,7 +332,7 @@ Para encontrar los **minitérminos** de una función, los 0 (ceros) lógicos en 
 | 0	  | 0	| m0 | A'B' |
 | 0	  | 1   | m1 | A'B  |
 | 1	  | 0	| m2 | AB'  |
-| 1	  | 1   | m3 | AB'  |
+| 1	  | 1   | m3 | AB   |
 
 Una función booleana puede representarse algebraicamente a través de la tabla de verdad formando la **suma de todos los minitérminos** que producen un 1 en la función.
 
@@ -346,8 +346,8 @@ Dada la siguiente función:
 |:---:|:---:|:---:|:---:|
 | 0	  | 0	| 1 | m0 = A'B' |
 | 0	  | 1   | 0 |   |
-| 1	  | 0	| 1 | m1 = AB'  |
-| 1	  | 1   | 1 | m2 = AB  |
+| 1	  | 0	| 1 | m2 = AB'  |
+| 1	  | 1   | 1 | m3 = AB  |
 
 **F = A'B' + AB' + AB**
 
