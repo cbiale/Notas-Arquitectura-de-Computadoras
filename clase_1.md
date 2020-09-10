@@ -351,7 +351,7 @@ Dada la siguiente función:
 
 **F = A'B' + AB' + AB**
 
-**F = m0 + m1 + m2**
+**F = m0 + m2 + m3**
 
 #### Uso de maxitérminos
 
