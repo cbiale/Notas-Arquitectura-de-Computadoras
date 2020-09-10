@@ -147,6 +147,8 @@ Vamos a usar una notación que se parece al álgebra para expresar funciones ló
 
 La notación se llama **álgebra booleana** en honor a **George Boole**.
 
+![](./figuras/boole.png)
+
 La circuitería digital se diseña y se analiza con el uso esta disciplina matemática.
 
 Un **valor booleano** es un 1 o un 0.
@@ -208,7 +210,7 @@ Se puede usar la siguientes alternativas de notación: **·**, **∧** , **∩**
 
 - Identidad:
     ```
-    Axsds + 0 = 0 + A = A
+    A + 0 = 0 + A = A
     A · 1 = 1 · A = A
     ```
 
@@ -253,12 +255,145 @@ Se puede usar la siguientes alternativas de notación: **·**, **∧** , **∩**
     (A + B) '= A'B'
     (AB) '= A' + B'
     ```
+- Ley de elementos nulos:
+
+    ```
+    A · 0 = 0
+    A + 1 = 1
+    ```
+- Ley de Idempotencia:
+  
+    ```
+    A · A = A
+    A + A = A
+    ```
+- Ley de Doble Complemento *(Involución)*:
+    ```
+    (A')' = A
+    ```
+
+- Ley de Absorción:
+  
+    ```
+    A · (A + B) = A
+    A + (A · B) = A
+    ```
+- Cada elemento identidad es el complemento del otro:
+    ```
+    0' = 1
+    1' = 0
+    ```
 
 **Pregunta**: ¿Cómo se prueban estas leyes?
 
 **Respuesta**: Es simple, pero tedioso.
 
-### Compuertas o Puertas
+### Precedencia de operadores 
+
+El orden de precedencia de los operadores es:
+- Paréntesis
+- Complemento
+- And
+- Or
+
+Ejemplo de uso de precedencia:
+
+![](./figuras/precedencia.png)
+
+
+### Minitérminos y maxitérminos
+
+**Minitérmino**: Término producto donde todas las variables aparecen exactamente una vez. Pueden estar complementadas o no.
+
+**Maxitérmino**: Término suma donde todas las variables aparecen exactamente una vez. Pueden estar complementadas o no
+
+Para **n** variables hay **2<sup>n</sup>** minitérminos y **2<sup>n</sup>** maxitérminos posibles.
+
+Para 2 variables A y B:
+
+- Los minitérminos posibles son **AB**, **AB'**, **A'B** y **A'B'**.
+
+- Los maxitérminos posibles son **A+B**, **A'+B**, **A+B'** y **A'+B'**.
+
+Vamos a definir que:
+
+- **Mj** denota el maxitérmino para el cual su combinación binaria se corresponde al decimal **j**.
+
+- **mj** denota el minitérmino para el cual su combinación binaria se corresponde al decimal **j**.
+
+#### Uso de minitérminos
+
+Para encontrar los **minitérminos** de una función, los 0 (ceros) lógicos en las variables son considerados como una variable negada en el minitérmino correspondiente.
+
+
+| A   | B   | Símbolo  | Minitérmino |
+|:---:|:---:|:---:|:---:|
+| 0	  | 0	| m0 | A'B' |
+| 0	  | 1   | m1 | A'B  |
+| 1	  | 0	| m2 | AB'  |
+| 1	  | 1   | m3 | AB'  |
+
+Una función booleana puede representarse algebraicamente a través de la tabla de verdad formando la **suma de todos los minitérminos** que producen un 1 en la función.
+
+A esto denominamos: **Suma Expandida de Productos**.
+
+Ejemplo: 
+
+Dada la siguiente función:
+
+| A   | B   | F  | Minitérmino |
+|:---:|:---:|:---:|:---:|
+| 0	  | 0	| 1 | m0 = A'B' |
+| 0	  | 1   | 0 |   |
+| 1	  | 0	| 1 | m1 = AB'  |
+| 1	  | 1   | 1 | m2 = AB  |
+
+**F = A'B' + AB' + AB**
+
+**F = m0 + m1 + m2**
+
+#### Uso de maxitérminos
+
+Para encontrar los **maxitérminos** de una función, los 1 (unos) lógicos en las variables son considerados como una variable negada en el maxitérmino correspondiente.
+
+| A   | B   | Símbolo  | Maxitérmino |
+|:---:|:---:|:---:|:---:|
+| 0	  | 0	| M0 | A+B |
+| 0	  | 1   | M1 | A+B'  |
+| 1	  | 0	| M2 | A'+B  |
+| 1	  | 1   | M3 | A'+B'  |
+
+Una función booleana puede representarse a través del producto de todos los maxitérminos que produzcan un 0 en la función.
+
+A esto denominamos **Producto Expandido de Sumas**.
+
+| A   | B   | F  | Maxitérmino |
+|:---:|:---:|:---:|:---:|
+| 0	  | 0	| 1 |  |
+| 0	  | 1   | 0 | M1 = A+B'   |
+| 1	  | 0	| 0 | M2 = A'+B |
+| 1	  | 1   | 1 |   |
+
+**F = (A+B') · (A'+B)**
+
+**F = M1 · M2**
+
+#### Suma de Productos
+
+Suma lógica de términos productos. Cada términos producto puede tener cualquier cantidad de literales.
+
+Dado **E = Y' + X'Z'** no está expresado como suma expandida de productos.
+
+> Puede expandirse: a través de la tabla de verdad o algebraicamente.
+
+
+#### Producto de Sumas
+
+Producto lógico de sumas. Cada suma puede tener cualquier cantidad de literales.
+
+Dado **F = X · (Y'+Z) · (X+Y+Z)** no está expresado como producto expandido de sumas.
+
+### Compuertas o puertas
 
 **Definición**: Dispositivo que implementa funciones lógicas básicas, como Y *(AND)* u O *(OR)*.
 
@@ -270,16 +405,32 @@ Dado que tanto **AND** como **OR** son conmutativos y asociativos, una compuerta
 
 La función lógica **NOT** se implementa con un inversor que siempre tiene una sola entrada.
 
+![](./figuras/or.png)
+
+Figura 2: Puertas OR
+
+
+![](./figuras/and.png)
+
+Figura 3: Puertas AND
+
+
+![](./figuras/not.png)
+
+Figura 4: Puertas NOT
+
 ![](./figuras/puertas.png)
 
-Figura 2: Ejemplo de puertas AND, OR y NOT
+Figura 5: Ejemplo de puertas AND, OR y NOT
 
 En lugar de dibujar inversores explícitamente, una práctica común es agregar **"burbujas"** a las entradas o salidas de una compuerta para hacer que el valor lógico en esa línea de entrada o línea de salida se invierta.
 
 
 ![](./figuras/burbujas.png)
 
-Figura 3: Implementación de puerta lógica de (A' + B)' usando inversiones explícitas a la izquierda y entradas y salidas burbujeadas a la derecha.
+Figura 6: Implementación de puerta lógica de (A' + B)' usando inversiones explícitas a la izquierda y entradas y salidas burbujeadas a la derecha.
+
+### Conjunto de puertas completo
 
 Cualquier función lógica se puede construir usando compuertas **AND**, compuertas **OR** e compuertas de inversión **NOT**.
 
@@ -297,12 +448,21 @@ Las tablas de verdad son:
 | 1	| 1 | 0 |
 
 
+![](./figuras/nand.png)
+
+Figura 7: Puertas NAND
+
 | A | B |	(A + B)' |
 |:---:|:---:|:---:|
 | 0	| 0	| 1 |
 | 0	| 1 | 0 |
 | 1	| 0	| 0 |
 | 1	| 1 | 0 |
+
+
+![](./figuras/nor.png)
+
+Figura 8: Puertas NOR
 
 De igual forma se puede implementar un **NXOR**, cuya tabla de verdad es:
 
@@ -313,11 +473,18 @@ De igual forma se puede implementar un **NXOR**, cuya tabla de verdad es:
 | 1	| 0	| 0 |
 | 1	| 1 | 1 |
 
-### Tarea 2
 
-Ejercicios....
+![](./figuras/nxor.png)
 
-Comprobaciones
+Figura 9: Puertas NXOR
+
+### Otras consideraciones
+
+Las compuertas pueden tener más de dos entradas.
+
+La compuerta amplificadora tiene como salida el valor de entrada *(E: 0 → S: 0, E: 1 → S:1)*.
+
+Se utiliza para retrasar la transmisión de una señal lógica y para distribuir la señal de salida a más componentes que la señal original.
 
 
 ## Lógica combinacional
