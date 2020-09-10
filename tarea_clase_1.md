@@ -13,3 +13,28 @@
 La construcción de la tabla de verdad es sencilla; simplemente complete las 24 entradas de salida mirando las definiciones de D, E y F.
 
 La producción de ecuaciones lógicas para D, E y F se puede realizar de dos formas.
+# Tarea 1
+
+1. Defina el siguiente circuito usando minitérminos y maxitérminos.
+
+    | A | B | C | F |
+    |:---:|:---:|:---:|:---:|
+    | 0 | 0 | 0 | 0 | 1 |
+    | 0 | 0 | 1 | 0 |
+    | 0 | 1 | 0 | 0 |
+    | 0 | 1 | 1 | 1 |
+    | 1 | 0 | 0 | 1 |
+    | 1 | 0 | 1 | 1 |
+    | 1 | 1 | 0 | 0 |
+    | 1 | 1 | 1 | 0 |
+
+
+2. Desarrollen en Logisim los circuitos resultantes.
+
+3. Desarrollen un decodificador de 1 a 2 en Logisim.
+
+4. Desarrollen un decodificador de 2 a 4 en Logisim.
+
+5. Desarrollen el Priority encoder dictado en clases.
+
+

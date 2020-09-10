@@ -148,6 +148,7 @@ Vamos a usar una notación que se parece al álgebra para expresar funciones ló
 La notación se llama **álgebra booleana** en honor a **George Boole**.
 
 ![](./figuras/boole.png)
+Figura 2: George Boole
 
 La circuitería digital se diseña y se analiza con el uso esta disciplina matemática.
 
@@ -295,10 +296,10 @@ El orden de precedencia de los operadores es:
 - Complemento
 - And
 - Or
-
-Ejemplo de uso de precedencia:
-
+ 
 ![](./figuras/precedencia.png)
+
+Figura 3: Ejemplo de uso de precedencia:
 
 
 ### Minitérminos y maxitérminos
@@ -407,28 +408,33 @@ La función lógica **NOT** se implementa con un inversor que siempre tiene una 
 
 ![](./figuras/or.png)
 
-Figura 2: Puertas OR
+Figura 4: Puertas OR
 
 
 ![](./figuras/and.png)
 
-Figura 3: Puertas AND
+Figura 5: Puertas AND
 
 
 ![](./figuras/not.png)
 
-Figura 4: Puertas NOT
+Figura 6: Puertas NOT
 
 ![](./figuras/puertas.png)
 
-Figura 5: Ejemplo de puertas AND, OR y NOT
+Figura 7: Ejemplo de puertas AND, OR y NOT
+
+
+![](./figuras/xor.png)
+
+Figura 8: Puertas XOR
 
 En lugar de dibujar inversores explícitamente, una práctica común es agregar **"burbujas"** a las entradas o salidas de una compuerta para hacer que el valor lógico en esa línea de entrada o línea de salida se invierta.
 
 
 ![](./figuras/burbujas.png)
 
-Figura 6: Implementación de puerta lógica de (A' + B)' usando inversiones explícitas a la izquierda y entradas y salidas burbujeadas a la derecha.
+Figura 9: Implementación de puerta lógica de (A' + B)' usando inversiones explícitas a la izquierda y entradas y salidas burbujeadas a la derecha.
 
 ### Conjunto de puertas completo
 
@@ -450,7 +456,7 @@ Las tablas de verdad son:
 
 ![](./figuras/nand.png)
 
-Figura 7: Puertas NAND
+Figura 10: Puertas NAND
 
 | A | B |	(A + B)' |
 |:---:|:---:|:---:|
@@ -462,7 +468,7 @@ Figura 7: Puertas NAND
 
 ![](./figuras/nor.png)
 
-Figura 8: Puertas NOR
+Figura 11: Puertas NOR
 
 De igual forma se puede implementar un **NXOR**, cuya tabla de verdad es:
 
@@ -476,7 +482,7 @@ De igual forma se puede implementar un **NXOR**, cuya tabla de verdad es:
 
 ![](./figuras/nxor.png)
 
-Figura 9: Puertas NXOR
+Figura 12: Puertas NXOR
 
 ### Otras consideraciones
 
@@ -513,53 +519,55 @@ La tabla de verdad de un decodificador de 2 a 4 es la siguiente:
 | 1	| 0	| 0	| 0 | 1 | 0 |
 | 1	| 1	| 0	| 0 | 0 | 1 |
 
+Se usan para:
+- Decodificación de Instrucciones.
+- Decodificación de Direcciones.
 
 
-### Multiplexores
+Un **codificador** *(o encoder)* realiza la función inversa del decodificador o **(decoder)**.
+
+Tiene **2<sup>n</sup>** entradas *(o menos)* y **n** salidas.
+
+La tabla de verdad de un codificador de 2 a 1 es la siguiente:
+
+| S1 |	S0 | A |
+|:---:|:---:|:---:|
+| 0	| 1 | 0	|
+| 1	| 0	| 1 |
 
 
-### Lógica de dos niveles: PLA (y PAL)
+La tabla de verdad de un codificador de 4 a 2 es la siguiente:
 
-### ROM
+| S3 | S2 | S1 | S0 | A1 | A0 |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| 0	| 0 | 0	| 1	| 0 | 0 | 
+| 0	| 0	| 1 | 0 | 0 | 1 |
+| 0	| 1	| 0 | 0 | 1 | 0 |
+| 1	| 0	| 0 | 0 | 1 | 1 |
 
-### Matrices de elementos lógicos
+El problemas de esta implementación son las **ambigüedades**:
+- Solo una entrada puede tener valor 1.
+- ¿Qué pasa cuando hay más de una entrada en 1? La salida dependerá de la implementación.
+- ¿Qué pasa cuando todas las entradas valen 0?
 
-### Bus
+> Debemos establecer prioridades.
 
+Para ello vamos a usar un **Priority Encoder**.
 
-
-
-
------------
-
-### Obtener funciones lógicas 
-
-Examine la columna de la tabla de verdad para una salida dada y escriba un término para cada entrada que sea un 1. Este método requiere la construcción de la tabla de verdad.
-
-La primera forma en que producimos la ecuación lógica muestra que cualquier ecuación lógica se puede escribir usando solo Y, O y NO. De hecho, muestra más. Cada entrada en la columna de salida de la tabla de verdad corresponde al AND de varios literales (en este caso, tres literales, porque hay tres entradas).
-
-Un literal es una variable de entrada o la negación de una variable de entrada.
-
-En lógica matemática, se dice que dicha fórmula está en "forma normal disyuntiva" porque es la disyunción (es decir, OR) de conjunciones (es decir, AND).
-
-En la arquitectura de computadora, la forma normal disyuntiva a menudo se llama dos niveles de lógica porque muestra que cualquier fórmula de este tipo se puede calcular pasando señales a través de solo dos funciones lógicas, Y y luego O (suponiendo que se nos den las entradas y sus complementos).
-
-Primero calcule todos los AND. Puede haber muchos, muchos de estos, pero todos se pueden calcular a la vez utilizando muchas, muchas puertas AND.
-
-Calcule los OR requeridos de los AND calculados en el paso 1. Sólo hay un OR para cada variable de salida, pero ese OR puede tener muchas entradas.
+Donde las entradas tienen diferentes prioridades. Se agrega una salida que indica la validez de las demás salidas.
 
 
-miniterminos
-maxiterminos
-simplificacion
-descarte de valores
+| S3 | S2 | S1 | S0 | A1 | A0 | V |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| 0	| 0 | 0	| 0	| X | X | 0 | 
+| 0	| 0 | 0	| 1	| 0 | 0 | 1 |
+| 0	| 0	| 1 | X | 0 | 1 | 1 |
+| 0	| 1	| X | X | 1 | 0 | 1 |
+| 1	| X	| X | X | 1 | 1 | 1 |
 
-*Existe una forma adicional, que consiste en 
-mirar la definición de D, E y F y "descúbrirla".*
+**X** en las entradas representa términos del producto que no son minitérminos.
+Por ejemplo: **001X** representa **D3'D2'D1**.
+
+**X** en las salidas representa términos que no se deben tener en cuenta su valor, por eso hay otra salida para indicar el estado **(V)**. 
 
 
-https://cs.nyu.edu/courses/fall17/CSCI-UA.0436-001/class-notes.html
-
-https://www.ics.uci.edu/~swjun/courses/2019W-CS152/material/lec4%20-%20Circuits.pdf
-
-http://users.ece.cmu.edu/~jhoe/doku/doku.php?id=18-447_course_schedule_spring_2020
