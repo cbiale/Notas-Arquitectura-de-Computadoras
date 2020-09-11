@@ -14,13 +14,13 @@
     | 1 | 1 | 1 | 0 |
 
 
-2. Desarrollen en Logisim los circuitos resultantes.
+2. Desarrolle en Logisim los circuitos resultantes.
 
-3. Desarrollen un decodificador de 1 a 2 en Logisim.
+3. Desarrolle un decodificador de 1 a 2 en Logisim.
 
-4. Desarrollen un decodificador de 2 a 4 en Logisim.
+4. Desarrolle un decodificador de 2 a 4 en Logisim.
 
-5. Desarrollen el Priority encoder dictado en clases.
+5. Desarrollen el Priority encoder dictado en clases en Logisim.
    
 6. Considere una función lógica con tres entradas A, B y C; y tres salidas D, E y F definidas como sigue:
 
