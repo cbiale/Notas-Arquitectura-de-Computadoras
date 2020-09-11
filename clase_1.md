@@ -148,6 +148,7 @@ Vamos a usar una notación que se parece al álgebra para expresar funciones ló
 La notación se llama **álgebra booleana** en honor a **George Boole**.
 
 ![](./figuras/boole.png)
+
 Figura 2: George Boole
 
 La circuitería digital se diseña y se analiza con el uso esta disciplina matemática.
