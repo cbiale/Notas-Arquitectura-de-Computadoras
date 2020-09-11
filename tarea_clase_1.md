@@ -28,9 +28,7 @@
     - E es verdadera si exactamente dos entradas son verdaderas.
     - F es verdadera si las tres entradas son verdaderas.
  
- El objetivo es calcular la tabla de verdad y las ecuaciones lógicas. 
- 
- La construcción de la tabla de verdad es sencilla; simplemente complete las 24 entradas de salida mirando las definiciones de D, E y F.
+    El objetivo es calcular la tabla de verdad y las ecuaciones lógicas. La construcción de la tabla de verdad es sencilla; simplemente complete las 24 entradas de salida mirando las definiciones de D, E y F.
 
 7. Demuestre las leyes de DeMorgan **(mediante tablas de verdad)**.
 
