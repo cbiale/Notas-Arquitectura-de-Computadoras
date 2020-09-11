@@ -1,6 +1,6 @@
 # Tareas clase 1
 
-1. Defina el siguiente circuito usando minitérminos y maxitérminos.
+1. Defina el siguiente circuito usando minitérminos y maxitérminos. Considere A, B y C son entradas y F es salida.
 
     | A | B | C | F |
     |:---:|:---:|:---:|:---:|
