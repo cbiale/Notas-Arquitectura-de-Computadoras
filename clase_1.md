@@ -566,7 +566,7 @@ Donde las entradas tienen diferentes prioridades. Se agrega una salida que indic
 | 1	| X	| X | X | 1 | 1 | 1 |
 
 **X** en las entradas representa términos del producto que no son minitérminos.
-Por ejemplo: **001X** representa **D3'D2'D1**.
+Por ejemplo: **001X** representa **S3'S2'S1**.
 
 **X** en las salidas representa términos que no se deben tener en cuenta su valor, por eso hay otra salida para indicar el estado **(V)**. 
 
