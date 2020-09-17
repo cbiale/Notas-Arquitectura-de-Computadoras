@@ -138,7 +138,7 @@ Tabla 2: Tabla de verdad de 2 entradas y 1 salida.
 
 - n + k columnas.
 - 2 <sup>n</sup> filas.
-- n * k signos de interrogación.
+- 2 <sup>n</sup> * k signos de interrogación.
 - 2 <sup>(2 <sup>n</sup> * k)</sup> posibilidades.
 
 ## Álgebra de Boole
@@ -148,6 +148,7 @@ Vamos a usar una notación que se parece al álgebra para expresar funciones ló
 La notación se llama **álgebra booleana** en honor a **George Boole**.
 
 ![](./figuras/boole.png)
+
 Figura 2: George Boole
 
 La circuitería digital se diseña y se analiza con el uso esta disciplina matemática.
