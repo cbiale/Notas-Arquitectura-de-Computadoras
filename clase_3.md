@@ -155,6 +155,9 @@ El **flip-flop D** elimina el estado indefinido, asegurandose que las entradas S
 
 Este flip-flop es muy usado en los procesadores.
 
+
+![](./figuras/clase3_10.png)
+
 El **Flip Flop JK** corrige el estado indefinido del Flip Flop SR. La entrada J pone la salida en 1, la entrada K pone la salida en 0 y si ambas entradas se encuentran habilitadas complementan la salida.
 
 ![](./figuras/clase3_11.png)
