@@ -216,7 +216,7 @@ Un registro más general de este tipo permite disponer de:
 
 Un **contador** puede implementarse de diferentes formas, una forma es mediante un contador asincrónico, o contador **ripple**; donde el reloj dispara los cambios en un Flip Flop y la salida de ese Flip Flop sirve como fuente de disparo de los demás Flip Flops.
 
-Un contador binario es aquel que cicla a través de una secuencia de números binarios. Un contador binario de *n-bits* consiste de *n* Flip Flops y puede contar, en binario, desde **0** hasta **2<sup>n-1</sup>**.
+Un contador binario es aquel que cicla a través de una secuencia de números binarios. Un contador binario de *n-bits* consiste de *n* Flip Flops y puede contar, en binario, desde **0** hasta **2<sup>n</sup>-1**.
 
 El contador binario en ripple consiste de una serie de FF complementados conectados, donde la salida de cada FF se encuentra conectada al reloj del FF del bit siguiente y el FF del bit menos significativo recibe el pulso de entrada.
 
