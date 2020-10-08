@@ -55,6 +55,7 @@ Ejemplos: AMD Core Math Library *(ACML)*, Intel Math Kernel Library *(MKL)*, ATL
 - **GPU**: en 2007 se produce el gran salto a la computación de propósito general gracias a la primera distribución de Nvidia CUDA. En 2009, se da el *Big Bang* del Deep Learning.
 
 ![](figuras/clase4_2.png)
+
 CPU *(Multicore)* vs GPU *(Manycore)*
 
 ## CPUs
@@ -82,15 +83,9 @@ ALUs energéticamente eficientes, con muchas unidades con latencia alta y cauce 
 
 Las CPUs y GPUs son complementarias.
 
-Para la partes secuenciales en las
-que prima la latencia se usan CPUs. Las CPUs pueden ser órdenes de magnitud
-más rápidas que las GPUs para código
-secuencial. 
+Para la partes secuenciales en las que prima la latencia se usan CPUs. Las CPUs pueden ser órdenes de magnitud más rápidas que las GPUs para código secuencial. 
 
-Para las partes paralelas en las
-que gana el throughput se usan GPUs. Las GPUs pueden ser órdenes de magnitud
-más rápidas que las CPUs para código
-paralelo.
+Para las partes paralelas en las que gana el throughput se usan GPUs. Las GPUs pueden ser órdenes de magnitud más rápidas que las CPUs para código paralelo.
 
 Problemas adecuados para GPUs...
 
@@ -112,11 +107,9 @@ tecnología utilizada.
 
 Influyen en el rendimiento:
 - **Algoritmo**: determina el número de operaciones a ser ejecutadas y el número de operaciones de E/S.
-- **Lenguaje de programación, compilador, arquitectura**: determinan el número de instrucciones máquina
-ejecutadas por operación.
+- **Lenguaje de programación, compilador, arquitectura**: determinan el número de instrucciones máquina ejecutadas por operación.
 - **Procesador y sistema de memoria**: determinan cómo de rápido se ejecutan las instrucciones.
-- **Sistema de E/S** *(incluido el sistema operativo)*: determina cómo de rápido se sirven las operaciones
-de E/S.
+- **Sistema de E/S** *(incluido el sistema operativo)*: determina cómo de rápido se sirven las operaciones de E/S.
 
 # Abstracción
 
@@ -166,8 +159,59 @@ Cualquier componente de cualquier ordenador se puede clasificar en una de estas 
 
 
 
+La placa base contiene paquetes de circuitos integrados o chips. Tiene
+tres partes:
+- La que conecta con los dispositivos de E/S.
+- La memoria.
+- El procesador.
 
+**Memoria**: programas + datos que necesitan los programas. Normalmente
+construida a partir de DRAM *(Dynamic Random Access Memory)*. En la arquitectura Von Neuman existe una única memoria para programas y datos. En la arquitectura Harvard existe una memoria de datos y otra de programas.
 
+**Procesador o CPU**: es la parte activa de la placa base. El procesador contiene:
+- La **ruta de datos** encargada de realizar las operaciones aritméticas *(músculo)*.
+- La **ruta de control** que indica a la ruta de datos, a la memoria y a los dispositivos de E/S qué hacer de acuerdo a las instrucciones del programa *(cerebro)*.
 
+**Memoria caché**: es un tipo de memoria más pequeña y rápida que actúa como un buffer de la memoria DRAM, basada en tecnología SRAM *(Static Random Access Memory)*.
 
+La información de la memoria principal es volátil, es decir, desaparece cuando no hay energía. Para persistir la información se utiliza la memoria secundaria que es no volátil, ejemplos:
+- Discos magnéticos.
+- Memoria flash.
+- Discos ópticos *(CDROM, DVD)*.
+
+# Tiempo de respuesta Vs throughput
+
+El **tiempo de respuesta** es el tiempo que tarda en realizarse una tarea.
+
+El **throughoput** es la cantidad de trabajo completado por unidad de tiempo.
+
+> **Para pensar**
+>
+> Indicar si los siguientes cambios en un ordenador incrementan el throughput decrementan el tiempo de respuesta o ambos.
+> - Reemplazar el procesador por uno más rápido.
+> - Añadir más procesadores a un sistema multiprocesador para la ejecución de múltiples tareas.
+
+Como usuarios nos interesa el tiempo de ejecución. En cambio, como diseñadores nos interesa lo rápido que es el hardware a la hora de ejecutar funciones básicas.
+
+Todos los computadores se diseñan utilizando un reloj que marca la realización de determinados eventos en el hardware. Estos intervalos se denominan **ciclos de reloj**.
+
+**Periodo de reloj**: es el tiempo que se tarda en completarse un ciclo de reloj *(250 picosegundos o 250 ps)*.
+
+**Frecuencia de reloj**: es la inversa del periodo de reloj *(4 gigahertzios o 4 GHz)*.
+
+Las siguientes fórmulas son particularmente útiles puesto que separan los **tres factores clave que afectan al rendimiento**.
+
+En función de periodo: 
+- **Tiempo de CPU** = Nro. de instrucciones x CPI x Periodo de reloj
+
+En función de la frecuencia:
+- **Tiempo de CPU** = Nro. de instrucciones x CPI / Frecuencia de reloj
+
+El CPI o ciclos por instrucción, es el número medio de ciclos de reloj que se necesitan para ejecutar una instrucción.
+
+El CPI nos permite comparar dos implementaciones distintas del mismo ISA.
+
+El **Speedup** se usa para mostrar el efecto en el rendimiento después de cualquier mejora en los recursos, donde:
+
+- **Speedup** = (I x CPI x P) sin mejora / (I x CPI x P ) con mejora
 
