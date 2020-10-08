@@ -55,21 +55,24 @@ datos. La unidad de control se encarga de generar las señales de control para l
 
 # Taxonomía de Flynn
 
-Clasificación de arquitecturas de computadores propuesta por **Michael J. Flynn** en 1972
+Clasificación de arquitecturas de computadores propuesta por **Michael J. Flynn** en 1972 *([paper](./publicaciones/Flynn_1972.pdf))*.
 
 - **SISD**: una instrucción, un dato.
 - **SIMD**: una instrucción, múltiples datos.
 - **MISD**: múltiples instrucciones, un solo datos.
 - **MIMD**: múltiples instrucciones múltiples datos.
 
+
 # Clases de computadores
 
 Podemos clasificarlos en:
 
-- **Ordenadores personales**: de propósito general, sujetos a un compromiso entre coste y rendimiento. 
-- **Servidores**: Basados en la red, tienen alta capacidad, rendimiento y fiabilidad. Desde servidores pequeños hasta del tamaño de un edificio.
-- **Supercomputadores**: Cálculos científicos y de ingeniería de alta gama. Máxima capacidad, representan una pequeña fracción del mercado informático.
-- **Sistemas empotrados**: Oculto como componentes de sistemas. Tienen restricciones estrictas de potencia, rendimiento y coste.
+- **Ordenadores personales**: de propósito general, diseñados para ofrecer un buen rendimiento a los usuarios. Actualmente, la mayor parte son portátiles. Aspectos de diseño: sujetos a una relación precio-rendimiento, energía y rendimiento de los gráficos.
+- **Dispositivos móviles personales**: dispositivos sin cables con interfaz de usuario multimedia, en este grupo encontramos a los celulares, tablets, etc. Aspectos de diseño: Precio, energía,
+rendimiento y tiempo de respuesta.
+- **Servidores**: Basados en la red, dan servicio a múltiples usuarios de forma simultánea, tienen alta capacidad, rendimiento y fiabilidad. Desde servidores pequeños hasta del tamaño de un edificio. Aspectos de diseño: throughput *(Tasa de procesamiento)*, disponibilidad, fiabilidad, energía y escalabilidad.
+- **Supercomputadores o clusters**: Usados para cálculos científicos y de ingeniería de alta gama. Conjunto de computadores conectados mediante una red que actúa como un único computador de más prestaciones. Representan una pequeña fracción del mercado informático.Aspectos de diseño: Precio-rendimiento, throughput *(Tasa de procesamiento)*, disponibilidad, fiabilidad, energía y escalabilidad.
+- **Sistemas empotrados**: Oculto como componentes de sistemas. Aspectos de diseño: tienen restricciones estrictas de potencia, rendimiento y coste.
 - **Sistemas robóticos**: tienen sensores y actuadores *(los anteriores también)*, los más avanzados están basados en microprocesadores.
 
 # Paralelismo
