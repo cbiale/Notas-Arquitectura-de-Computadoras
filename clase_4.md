@@ -135,7 +135,9 @@ Para las partes paralelas en las que gana el throughput se usan GPUs. Las GPUs p
 
 Si medimos el rendimiento de un sistema en MIPS *(millones de instrucciones por segundo)*, se tiene:
 
-**MIPS** = (instrucciones/ciclo) x (ciclos/segundo) x 10<sup>-6</sup>
+```
+MIPS = (instrucciones/ciclo) x (ciclos/segundo) x 10^-6
+```
 
 Donde:
 - instrucciones/ciclo: depende de la
@@ -243,16 +245,25 @@ Consideremos que:
 Las siguientes fórmulas son particularmente útiles puesto que separan los **tres factores clave que afectan al rendimiento**.
 
 En función de periodo: 
-- **Tiempo de CPU** = Nro. de instrucciones x CPI x Periodo de reloj
+
+```
+Tiempo de CPU = Nro. de instrucciones x CPI x Periodo de reloj
+```
 
 En función de la frecuencia:
-- **Tiempo de CPU** = Nro. de instrucciones x CPI / Frecuencia de reloj
+
+```
+Tiempo de CPU = Nro. de instrucciones x CPI / Frecuencia de reloj
+```
 
 El CPI o ciclos por instrucción, es el número medio de ciclos de reloj que se necesitan para ejecutar una instrucción. El CPI nos permite comparar dos implementaciones distintas del mismo ISA.
 
 El **Speedup** se usa para mostrar el efecto en el rendimiento después de cualquier mejora en los recursos, donde:
 
-- **Speedup** = (I x CPI x P) sin mejora / (I x CPI x P ) con mejora
+```
+Speedup = (I x CPI x P) sin mejora / (I x CPI x P ) con mejora
+```
+# Resumen
 
 | Componente hardware o software | ¿A qué afecta? | 
 |:------------------------------:|:--------------:|  
