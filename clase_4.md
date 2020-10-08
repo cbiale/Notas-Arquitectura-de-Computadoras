@@ -199,7 +199,7 @@ Todo hardware realiza las mismas funciones básicas
 - Procesamiento de datos
 - Almacenamiento de datos
 
-Los componentes clásicos de un computador son
+Los cinco componentes clásicos de un computador son
 - Entrada
 - Salida
 - Ruta de datos y de control o procesador
@@ -227,7 +227,7 @@ La información de la memoria principal es volátil, es decir, desaparece cuando
 - Memoria flash.
 - Discos ópticos *(CDROM, DVD)*.
 
-# Tiempo de respuesta Vs throughput
+# Tiempo de respuesta vs throughput
 
 El **tiempo de respuesta** es el tiempo que tarda en realizarse una tarea.
 
@@ -259,7 +259,7 @@ En función de la frecuencia:
 Tiempo de CPU = Nro. de instrucciones x CPI / Frecuencia de reloj
 ```
 
-El CPI o ciclos por instrucción, es el número medio de ciclos de reloj que se necesitan para ejecutar una instrucción. El CPI nos permite comparar dos implementaciones distintas del mismo ISA.
+El CPI o **ciclos por instrucción**, es el número medio de ciclos de reloj que se necesitan para ejecutar una instrucción. El CPI nos permite comparar dos implementaciones distintas del mismo ISA.
 
 El **Speedup** se usa para mostrar el efecto en el rendimiento después de cualquier mejora en los recursos, donde:
 
@@ -274,3 +274,24 @@ Speedup = (I x CPI x P) sin mejora / (I x CPI x P ) con mejora
 | Lenguaje de programación | Recuento de instrucciones y CPI | 
 | Compilador | Recuento de instrucciones y CPI | 
 | ISA | Recuento de instrucciones, frecuencia de reloj, CPI | 
+
+Factores que intervienen:
+- Juego de instrucciones.
+- Reloj de la CPU.
+- Número de nucleos.
+- Ancho de palabra.
+
+# Leer
+
+Del libro de referencia deben leer los apartados:
+
+- 1.1. Introduction
+- 1.2. Eight Great Ideas in Computer
+Architecture
+- 1.3 Below Your Program
+- 1.4 Under the Covers
+- 1.6 Performance
+- 1.10 Fallacies and Pitfalls
+- 1.11 Concluding Remarks
+
+> Para tener una perspectiva historica recomiendo lean el apartado 1.12

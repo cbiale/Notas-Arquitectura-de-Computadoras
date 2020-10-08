@@ -31,3 +31,4 @@ ejecutarse en el ordenador A, que tiene una frecuencia de reloj de 2 GHz Queremo
 
     ¿Qué secuencia de código ejecuta más instrucciones?
     ¿Cuál es el CPI de cada secuencia? ¿Cuál es más rápida?
+
