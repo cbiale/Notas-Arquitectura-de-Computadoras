@@ -3,15 +3,59 @@
 La arquitectura del computador hace
 referencia a todos aquellos elementos del sistema visibles al programador que tienen impacto directo en la ejecución lógica de un programa.
 
+Atributos visibles para un programador
+- Juego de instrucciones que ofrece la máquina *(ISA, Instruction Set Architecture)*.
+- Tipo y formato de datos que es capaz de utilizar el
+computador.
+- Número y tamaño de los registros.
+- Técnicas y mecanismos de E/S.
+- Técnicas de direccionamiento de la memoria.
+
 # Componentes de un computador
 
 ![](./figuras/clase4_1.png)
 
 Arquitectura Von Neuman & Eckert-Mauchly, *First Draft of a Report on the EDVAC*, 1945.
 
-**Taxonomía de Flynn**: clasificación de
-arquitecturas de computadores propuesta
-por **Michael J. Flynn** en 1972
+Repasemos: 
+
+Los datos y las instrucciones deben introducirse en el sistema y se proporcionan los resultados mediante:
+Los sistemas de entrada/salida.
+
+Los módulos de E/S comunican el procesador con el exterior.
+
+Se necesita un sitio para almacenar temporalmente las instrucciones y los datos: memoria principal.
+
+Entre los elementos de la memoria principal encontramos:
+- Registro de direcciones *(MAR, Memory Address Register)*
+- Registro de datos *(MBR, Memory Buffer Register o MDR, Memory Data Register)*
+- Señales de control
+    - R: Lectura *(Read)*
+    - W: Escritura *(Write)*
+
+Al hablar de **espacio de direcciones** nos referimos al número de posiciones de memoria, el **tamaño de cada posición** se encuentra definido por el número de bits por posición.
+
+Para comunicar las distintas partes del computador se usan **buses**. Un bus es un camino de comunicación entre dos o más elementos *(procesador, memoria, etc.)* para la transmisión de información entre ellos, suele formarse por varias líneas de
+comunicación, cada una transmite un bit.
+
+Hay tres tipos principales:
+- bus de control: señales de control y temporización
+- bus de direcciones: designa la fuente o destino de un dato. Su anchura determina la máxima capacidad de memoria del sistema.
+- bus de datos: movimiento de datos entre componentes
+
+El procesador es el responsable de la lectura y ejecución de las instrucciones almacenadas en memoria principal. Entre sus componentes encontramos al banco de registros, la unidad de control y la ALU.
+
+Los registros almacenan una secuencia de bits.
+Hay dos registros especiales:
+- El registro PC *(contador de programa)* contiene la dirección de la siguiente instrucción a ejecutar.
+- El registro RI *(registro de instrucción)* almacena la instrucción que se está ejecutando.
+
+La ALU realiza operaciones elementales sobre los
+datos. La unidad de control se encarga de generar las señales de control para la ejecución de instrucciones.
+
+# Taxonomía de Flynn
+
+Clasificación de arquitecturas de computadores propuesta por **Michael J. Flynn** en 1972
 
 - **SISD**: una instrucción, un dato.
 - **SIMD**: una instrucción, múltiples datos.
@@ -22,14 +66,10 @@ por **Michael J. Flynn** en 1972
 
 Podemos clasificarlos en:
 
-- **Ordenadores personales**: de propósito general, sujetos a un compromiso entre coste y
-rendimiento. 
+- **Ordenadores personales**: de propósito general, sujetos a un compromiso entre coste y rendimiento. 
 - **Servidores**: Basados en la red, tienen alta capacidad, rendimiento y fiabilidad. Desde servidores pequeños hasta del tamaño de un edificio.
-- **Supercomputadores**: Cálculos científicos y de ingeniería de alta
-gama. Máxima capacidad, representan una
-pequeña fracción del mercado informático.
-- **Sistemas empotrados**: Oculto como componentes de sistemas. Tienen restricciones estrictas de potencia,
-rendimiento y coste.
+- **Supercomputadores**: Cálculos científicos y de ingeniería de alta gama. Máxima capacidad, representan una pequeña fracción del mercado informático.
+- **Sistemas empotrados**: Oculto como componentes de sistemas. Tienen restricciones estrictas de potencia, rendimiento y coste.
 - **Sistemas robóticos**: tienen sensores y actuadores *(los anteriores también)*, los más avanzados están basados en microprocesadores.
 
 # Paralelismo
@@ -87,8 +127,6 @@ Para la partes secuenciales en las que prima la latencia se usan CPUs. Las CPUs 
 
 Para las partes paralelas en las que gana el throughput se usan GPUs. Las GPUs pueden ser órdenes de magnitud más rápidas que las CPUs para código paralelo.
 
-Problemas adecuados para GPUs...
-
 # La era post PCs
 
 ![](figuras/clase4_3.png)
@@ -141,6 +179,13 @@ acceso a memoria, etc.
 > El Sistema Operativo encapsula los detalles de la E/S, de la asignación
 de memoria y del resto de funciones de bajo nivel => el principio de abstracción es el que permite el desarrollo de sistemas complejos basándose en la ocultación de los detalles de bajo nivel entre niveles sucesivos de una jerarquía.
 
+# ¿Qué es un computador?
+
+**Computador**: máquina destinada a procesar datos. Sobre ellos se aplican unas instrucciones obteniendo
+después unos resultados *(datos/información)*.
+
+**Computador digital**: datos e instrucciones en formato binario.
+
 # Componentes de un computador
 
 Todo hardware realiza las mismas funciones básicas
@@ -156,8 +201,6 @@ Los componentes clásicos de un computador son
 - Memoria
 
 Cualquier componente de cualquier ordenador se puede clasificar en una de estas categorías con independencia de la tecnología utilizada.
-
-
 
 La placa base contiene paquetes de circuitos integrados o chips. Tiene
 tres partes:
@@ -211,3 +254,9 @@ El **Speedup** se usa para mostrar el efecto en el rendimiento después de cualq
 
 - **Speedup** = (I x CPI x P) sin mejora / (I x CPI x P ) con mejora
 
+| Componente hardware o software | ¿A qué afecta? | 
+|:------------------------------:|:--------------:|  
+| Algoritmo | Recuento de instrucciones y posiblemente al CPI | 
+| Lenguaje de programación | Recuento de instrucciones y CPI | 
+| Compilador | Recuento de instrucciones y CPI | 
+| ISA | Recuento de instrucciones, frecuencia de reloj, CPI | 
