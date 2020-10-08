@@ -191,13 +191,11 @@ El **throughoput** es la cantidad de trabajo completado por unidad de tiempo.
 > - Reemplazar el procesador por uno más rápido.
 > - Añadir más procesadores a un sistema multiprocesador para la ejecución de múltiples tareas.
 
-Como usuarios nos interesa el tiempo de ejecución. En cambio, como diseñadores nos interesa lo rápido que es el hardware a la hora de ejecutar funciones básicas.
+Como usuarios nos interesa el tiempo de ejecución. En cambio, como diseñadores nos interesa lo rápido que es el hardware a la hora de ejecutar funciones básicas. Todos los computadores se diseñan utilizando un reloj que marca la realización de determinados eventos en el hardware. Estos intervalos se denominan **ciclos de reloj**.
 
-Todos los computadores se diseñan utilizando un reloj que marca la realización de determinados eventos en el hardware. Estos intervalos se denominan **ciclos de reloj**.
-
-**Periodo de reloj**: es el tiempo que se tarda en completarse un ciclo de reloj *(250 picosegundos o 250 ps)*.
-
-**Frecuencia de reloj**: es la inversa del periodo de reloj *(4 gigahertzios o 4 GHz)*.
+Consideremos que: 
+- **Periodo de reloj**: es el tiempo que se tarda en completarse un ciclo de reloj *(250 picosegundos o 250 ps)*.
+- **Frecuencia de reloj**: es la inversa del periodo de reloj *(4 gigahertzios o 4 GHz)*.
 
 Las siguientes fórmulas son particularmente útiles puesto que separan los **tres factores clave que afectan al rendimiento**.
 
@@ -207,9 +205,7 @@ En función de periodo:
 En función de la frecuencia:
 - **Tiempo de CPU** = Nro. de instrucciones x CPI / Frecuencia de reloj
 
-El CPI o ciclos por instrucción, es el número medio de ciclos de reloj que se necesitan para ejecutar una instrucción.
-
-El CPI nos permite comparar dos implementaciones distintas del mismo ISA.
+El CPI o ciclos por instrucción, es el número medio de ciclos de reloj que se necesitan para ejecutar una instrucción. El CPI nos permite comparar dos implementaciones distintas del mismo ISA.
 
 El **Speedup** se usa para mostrar el efecto en el rendimiento después de cualquier mejora en los recursos, donde:
 
