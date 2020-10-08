@@ -1,0 +1,173 @@
+# Arquitectura de Computadores
+
+La arquitectura del computador hace
+referencia a todos aquellos elementos del sistema visibles al programador que tienen impacto directo en la ejecución lógica de un programa.
+
+# Componentes de un computador
+
+![](./figuras/clase4_1.png)
+
+Arquitectura Von Neuman & Eckert-Mauchly, *First Draft of a Report on the EDVAC*, 1945.
+
+**Taxonomía de Flynn**: clasificación de
+arquitecturas de computadores propuesta
+por **Michael J. Flynn** en 1972
+
+- **SISD**: una instrucción, un dato.
+- **SIMD**: una instrucción, múltiples datos.
+- **MISD**: múltiples instrucciones, un solo datos.
+- **MIMD**: múltiples instrucciones múltiples datos.
+
+# Clases de computadores
+
+Podemos clasificarlos en:
+
+- **Ordenadores personales**: de propósito general, sujetos a un compromiso entre coste y
+rendimiento. 
+- **Servidores**: Basados en la red, tienen alta capacidad, rendimiento y fiabilidad. Desde servidores pequeños hasta del tamaño de un edificio.
+- **Supercomputadores**: Cálculos científicos y de ingeniería de alta
+gama. Máxima capacidad, representan una
+pequeña fracción del mercado informático.
+- **Sistemas empotrados**: Oculto como componentes de sistemas. Tienen restricciones estrictas de potencia,
+rendimiento y coste.
+- **Sistemas robóticos**: tienen sensores y actuadores *(los anteriores también)*, los más avanzados están basados en microprocesadores.
+
+# Paralelismo
+
+Podemos tener paralelismo interno o explicito.
+
+Cuando hablamos de **paralelismo interno**, se da en máquinas **SISD**, es decir con un solo procesador o CPU. Se logra mediante **segmentación** *(pipelining)* sin replicar hardware.
+
+El **paralelismo explícito** se da en:
+- **SIMD**: una única unidad de control que gobierna varias ALUs.
+- **MIMD**: varios procesadores que manejan, cada uno, un flujo de instrucciones sobre un
+flujo de datos.
+
+Las máquinas **MIMD** tienen un número de procesadores que funcionan de manera
+asíncrona e independiente para lograr
+paralelismo puro. En cualquier momento, cualquier procesador puede ejecutar diferentes instrucciones sobre distintos datos. Pueden tener memoria compartida o distribuida.
+
+Las máquinas **SIMD** pueden estar basadas en:
+- **CPU + juego extendido de instrucciones**: como el repertorio AVX
+*(Advanced Vector Extensions, 2008)* de Intel, que se utiliza para álgebra lineal: suma de vectores, multiplicación escalar, multiplicación de matrices, etc.
+- **Basic Linear Algebra Subprograms *(BLAS)***: es una interfaz que define un conjunto de rutinas de bajo nivel para realizar operaciones comunes de álgebra lineal. Este conjunto de rutinas suponen el estándar de facto para las librerías de álgebra lineal.
+Ejemplos: AMD Core Math Library *(ACML)*, Intel Math Kernel Library *(MKL)*, ATLAS y OpenBLAS.
+- **GPU**: en 2007 se produce el gran salto a la computación de propósito general gracias a la primera distribución de Nvidia CUDA. En 2009, se da el *Big Bang* del Deep Learning.
+
+![](figuras/clase4_2.png)
+CPU *(Multicore)* vs GPU *(Manycore)*
+
+## CPUs
+
+Las CPUs tienen un diseño orientado a la latencia. 
+
+Se busca una frecuencia de
+procesador alta, con cachés grandes que reducen el tiempo medio de
+acceso a la jerarquía de memoria.
+
+Control sofisticado con predicción de salto para reducir la latencia por riesgos de control y adelantamiento de datos para reducir la latencia por
+riesgos de datos. 
+
+ALU potente que realiza operaciones con poca latencia.
+
+## GPUs
+
+Tienen un diseño orientado al **throughput**.
+
+Usa una arquitectura SIMD, con una frecuencia de procesador moderada, las cachés son pequeñas para impulsar el throughput de memoria.
+
+Control sencillo sin predicción de salto, ni adelantamiento de datos.
+
+ALUs energéticamente eficientes, con muchas unidades con latencia alta y cauce largo para incrementar el throughput. Requiere una cantidad masiva de hilos para *ocultar* la latencia.
+
+Las CPUs y GPUs son complementarias.
+
+Para la partes secuenciales en las
+que prima la latencia se usan CPUs. Las CPUs pueden ser órdenes de magnitud
+más rápidas que las GPUs para código
+secuencial. 
+
+Para las partes paralelas en las
+que gana el throughput se usan GPUs. Las GPUs pueden ser órdenes de magnitud
+más rápidas que las CPUs para código
+paralelo.
+
+Problemas adecuados para GPUs...
+
+# La era post PCs
+
+![](figuras/clase4_3.png)
+
+# Rendimiento
+
+Si medimos el rendimiento de un sistema en MIPS *(millones de instrucciones por segundo)*, se tiene:
+
+**MIPS** = (instrucciones/ciclo) x (ciclos/segundo) x 10<sup>-6</sup>
+
+Donde:
+- instrucciones/ciclo: depende de la
+arquitectura.
+- ciclos/segundo: depende de la
+tecnología utilizada.
+
+Influyen en el rendimiento:
+- **Algoritmo**: determina el número de operaciones a ser ejecutadas y el número de operaciones de E/S.
+- **Lenguaje de programación, compilador, arquitectura**: determinan el número de instrucciones máquina
+ejecutadas por operación.
+- **Procesador y sistema de memoria**: determinan cómo de rápido se ejecutan las instrucciones.
+- **Sistema de E/S** *(incluido el sistema operativo)*: determina cómo de rápido se sirven las operaciones
+de E/S.
+
+# Abstracción
+
+![](figuras/clase4_4.png)
+
+El software de sistema esta compuesto por:
+
+- **Sistema operativo**: Gestión básica de las operaciones de E/S. Asignación de almacenamiento y memoria. Reparto seguro de los recursos del sistema entre múltiples aplicaciones que se ejecutan de forma simultánea...
+- **Compiladores**: un programa que traduce un programa escrito en un lenguaje de alto nivel en instrucciones que el hardware puede ejecutar. Dada la sofisticación de los actuales lenguajes de programación, la traducción de un programa en lenguaje de alto nivel a
+lenguaje máquina es compleja.
+
+## Del lenguaje de alto nivel al lenguaje de máquina
+
+![](figuras/clase4_5.png)
+
+El **lenguaje de alto nivel** tiene un nivel de abstracción más cercano al dominio del problema, proporciona productividad y portabilidad.
+
+El **lenguaje ensamblador** es una representación textual de instrucciones.
+
+El **lenguaje máquina** está compuesto de dígitos binarios *(bits)*, las instrucciones y datos se encuentran codificados. 
+
+# Interfaz Hardware - Software
+
+El ISA *(Instruction Set Architecture)* o arquitectura, de un computador es la interfaz entre el hardware y el software de más bajo nivel.
+
+Incluye cualquier cosa que los programadores necesiten saber para hacer que un programa en lenguaje máquina funcione correctamente: instrucciones, dispositivos de E/S, registros,
+acceso a memoria, etc.
+
+> El Sistema Operativo encapsula los detalles de la E/S, de la asignación
+de memoria y del resto de funciones de bajo nivel => el principio de abstracción es el que permite el desarrollo de sistemas complejos basándose en la ocultación de los detalles de bajo nivel entre niveles sucesivos de una jerarquía.
+
+# Componentes de un computador
+
+Todo hardware realiza las mismas funciones básicas
+- Entrada de datos
+- Salida de datos
+- Procesamiento de datos
+- Almacenamiento de datos
+
+Los componentes clásicos de un computador son
+- Entrada
+- Salida
+- Ruta de datos y de control o procesador
+- Memoria
+
+Cualquier componente de cualquier ordenador se puede clasificar en una de estas categorías con independencia de la tecnología utilizada.
+
+
+
+
+
+
+
+

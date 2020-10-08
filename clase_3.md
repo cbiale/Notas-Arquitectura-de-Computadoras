@@ -226,9 +226,3 @@ El contador binario en ripple consiste de una serie de FF complementados conecta
 Puede implementarse con FF T, FF JK con ambas entradas en 1 o con FF D usando la salida complementada.
 
 ![](figuras/contador.png)
-
-
-
-
-
-
