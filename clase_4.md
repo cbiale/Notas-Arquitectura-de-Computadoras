@@ -59,7 +59,7 @@ Clasificación de arquitecturas de computadores propuesta por **Michael J. Flynn
 
 - **SISD**: una instrucción, un dato.
 - **SIMD**: una instrucción, múltiples datos.
-- **MISD**: múltiples instrucciones, un solo datos.
+- **MISD**: múltiples instrucciones, un solo dato.
 - **MIMD**: múltiples instrucciones múltiples datos.
 
 
@@ -278,7 +278,7 @@ Speedup = (I x CPI x P) sin mejora / (I x CPI x P ) con mejora
 Factores que intervienen:
 - Juego de instrucciones.
 - Reloj de la CPU.
-- Número de nucleos.
+- Número de núcleos.
 - Ancho de palabra.
 
 # Leer
@@ -294,4 +294,4 @@ Architecture
 - 1.10 Fallacies and Pitfalls
 - 1.11 Concluding Remarks
 
-> Para tener una perspectiva historica recomiendo lean el apartado 1.12
+> Para tener una perspectiva histórica recomiendo lean el apartado 1.12
