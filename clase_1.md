@@ -1,11 +1,17 @@
 # Arquitectura de Computadoras
 
-## Grupo de trabajo
+## Grupo de trabajo (Apostoles)
 
 - Adjunto: Claudio Omar Biale (Teoría y lógica digital)
 - Jefe de Trabajos Prácticos: Roberto Anibal Miño (Lógica digital)
 - Ayudante de Primera: Viviana María Arenhardt (Ensamblador usando RISC-V)
 - Ayudante de Segunda: Melissa Kolb (Ensamblador usando RISC-V)
+
+## Grupo de trabajo (Posadas)
+
+- Adjunto: Claudio Omar Biale (Teoría y lógica digital)
+- Jefe de Trabajos Prácticos: Viviana María Arenhardt (Lógica digital y ensamblador usando RISC-V)
+- Ayudante: Saúl Antonio Krujoski (Lógica digital y ensamblador usando RISC-V)
 
 ## Libro de Referencia
 
