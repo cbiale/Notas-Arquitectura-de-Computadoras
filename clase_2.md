@@ -1,10 +1,5 @@
 # Arquitectura de Computadoras
 
-## Tareas clase 1 y lectura 1
-
-En primer lugar, revisemos algunas tareas de la clase 1.
-
-Tienen como tarea realizar la [lectura 1](lecturas/lectura_1.md).
 
 ## Multiplexores
 
