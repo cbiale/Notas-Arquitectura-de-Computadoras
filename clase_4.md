@@ -266,6 +266,10 @@ El **Speedup** se usa para mostrar el efecto en el rendimiento después de cualq
 ```
 Speedup = (I x CPI x P) sin mejora / (I x CPI x P ) con mejora
 ```
+
+> Donde `I` es el nro. de instrucciones y `P` es el periodo de reloj
+
+
 # Resumen
 
 | Componente hardware o software | ¿A qué afecta? | 
@@ -285,9 +289,8 @@ Factores que intervienen:
 
 Del libro de referencia deben leer los apartados:
 
-- 1.1. Introduction
-- 1.2. Eight Great Ideas in Computer
-Architecture
+- 1.1 Introduction
+- 1.2 Eight Great Ideas in Computer Architecture
 - 1.3 Below Your Program
 - 1.4 Under the Covers
 - 1.6 Performance
