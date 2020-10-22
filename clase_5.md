@@ -485,5 +485,5 @@ Uso: Salto *(cercano)* condicional hacia delante o hacia atrás, salto relativo 
 - rs1: número del registro fuente, dirección base para el acceso a memoria
 - rs2: número del registro destino
 - immediate: desplazamiento para el cálculo de la dirección de memoria a la que hay que acceder
-    -Campo partido, para que los campos rs1 y rs2 siempre estén en el mismos sitio.
+    - Campo partido, para que los campos rs1 y rs2 siempre estén en el mismos sitio.
 - funct3: código de función de 3-bits (adicional al código de operación)
