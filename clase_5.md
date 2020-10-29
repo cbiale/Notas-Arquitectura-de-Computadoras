@@ -184,7 +184,7 @@ Los modos de direccionamiento determinan la ubicación de los operandos. ¿Dónd
 
 ![](figuras/clase_5_2.png)
 
-**Direccionamiento a registro**: el operando se encuentra en un registro, se incluye el identificador del registro que amacena el
+**Direccionamiento a registro**: el operando se encuentra en un registro, se incluye el identificador del registro que almacena el
 operando.
 
 ![](figuras/clase_5_3.png)
