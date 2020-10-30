@@ -29,7 +29,7 @@ la memoria por bytes. Responda a las siguientes preguntas:
 - `ADD`: Esta instrucción extrae de la pila el contenido de las dos primeras palabras apiladas. Realiza la suma de estos dos valores e inserta el resultado en la cima de la pila.
 - `POP R1`:  Esta función extrae un elemento (palabra de la pila) y lo almacena en R1.
 
-Defina el formato de las instrucciones si el banco de registros es de 32 bits, se dispone de 110 instrucciones y el computador es de 32 bits.
+Defina el formato de las instrucciones si el banco de registros es de 32 registros, se dispone de 110 instrucciones y el computador es de 32 bits.
 
 
 ## Rendimiento
