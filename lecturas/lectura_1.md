@@ -1,27 +1,82 @@
-# Circuitos integrados
-
-Un circuito intergrado *(IC)* o chip es una estructura de silicio *(material semiconductor)* que contiene los componentes electrónicos de compuertas digitales y elementos de almacenamiento. Se monta en un contenedor de plástico o cerámica.
-
-## Niveles de integración
-
-A medida que mejora la tecnología, se incrementa la cantidad de compuertas que puede haber en un chip.
-
-Dentro de los niveles de integración podemos citar:
-- **Small-scale integration** *(SSI)*: Varias compuertas independientes en un chip. Menos de 10 compuertas independientes.
-- **Medium-scale integration** *(MSI)*: realizan alguna función específica elemental *(por ejemplo: sumar)*. Entre 10 y 200 compuertas.
-- **Large-scale integration** *(LSI)*: Incluye procesadores pequeños, memorias pequeñas y módulos programables. Entre 200 y 100.000 compuertas.
-- **Very-large-scale integration** *(VLSI)*:  Microprocesadores complejos o para procesamiento digital de señales *(DSP)*. Más de 100.000 compuertas *(cientos de millones)*.
-
-> Algunos autores especifican como máximo tentativo de un LSI a algunas miles de compuertas y toman como mínimo de un VLSI a dicho valor.
- 
-## Bloques funcionales
-
-Dentro de este grupo encontramos a:
-- Decoder
-- Encoder
-- Multiplexor
-- Demultiplexor
+# Características de ISAs (Repaso)
 
 
+**Arquitectura Stack**: las instrucciones y operandos son tomados implícitamente del stack o pila. 
 
+> No se puede acceder a cualquier elemento del stack, sino que se debe seguir un orden. **No permite el acceso aleatorio**.
+
+**Arquitectura acumulador**: en cualquier operación binaria un operando está implícito *(se lo suele llamar acumulador)* El otro operando suele ser la memoria, generando cierto tráfico en el bus.
+
+**Arquitectura con registros de propósito general (GPR)**: los registros pueden ser utilizados en lugar de la memoria. Es más rápido que la de acumulador, se logran implementaciones eficientes usando compiladores, las instrucciones más largas *(dos o tres operandos)*.
+
+Veamos un ejemplo de posibles instrucciones en cada arquitectura: 
+
+![](../figuras/posibles.png)
+
+> Donde X es una posición de memoria y Rx es un registro.
+
+Las **Stack Machines** no usan operandos en las instrucciones, salvo **PUSH X** y **POP X** que requieren una dirección de memoria como operando. El resto de los operandos se obtienen del stack, por ejemplo: **PUSH** y **POP** operan sólo con el tope del stack.Las operaciones binarias (ej.**ADD**, **MULT**) usan los dos primeros elementos del stack.
+
+Utilizan notación polaca inversa, por ejemplo: 
+
+```
+Z = X Y +
+```
+
+> Equivale a Z = X + Y
+
+Es interesante que no se necesitan paréntesis:
+
+```
+Z = X Y * W U * +
+```
+
+> Equivale a Z = (X * Y) + (W * U)
+
+## Comparativa
+
+Veamos como se puede hacer una asignación en los distintos tipos de arquitecturas:
+
+Tomemos en cuenta la siguiente instrucción: **Z = X * Y**
+
+- Stack:
+  
+    ```
+    push X
+    push Y
+    mult
+    pop Z
+    ```
+
+- Acumulador: 
+  
+    ```
+    load X
+    mult Y
+    store Z
+    ```
+
+- RPG *(Formato registro-memoria, usando 2 operandos)*
+
+    ```
+    load R1, X
+    mult R1, Y
+    store Z, R1
+    ```
+- RPG *(Formato registro-registro, usando 3 operandos)*
+
+    ```
+    load R1, X
+    load R2, Y
+    mult R3, R1, r2
+    store Z, R3
+    ```
+
+- En una arquitectura memoria-memoria:
+
+    ```
+    mult Z, X, Y
+    ```
+
+> Como pueden implementar: **Z = X * Y + W * U**
 

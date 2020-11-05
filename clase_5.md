@@ -462,6 +462,8 @@ Uso: instrucciones aritmético-lógicas con operando inmediato
 - immediate: valor del segundo operando Fuente
 - funct3: código de función de 3-bits (adicional al código de operación)
 
+> Como codificar: `ld x9, 64(x22)`
+
 ### Instrucciones de tipo S
 
 ![](./figuras/clase_5_13.png)
@@ -487,3 +489,11 @@ Uso: Salto *(cercano)* condicional hacia delante o hacia atrás, salto relativo 
 - immediate: desplazamiento para el cálculo de la dirección de memoria a la que hay que acceder
     - Campo partido, para que los campos rs1 y rs2 siempre estén en el mismos sitio.
 - funct3: código de función de 3-bits (adicional al código de operación)
+
+
+> Tarea: ver el formato de los siguientes tipos:
+> - tipo UJ
+> - tipo U 
+>
+> En cada caso ver que instrucciones se encuentran incluidas.
+
