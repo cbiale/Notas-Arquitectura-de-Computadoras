@@ -34,7 +34,6 @@ Donde:
 acceder a memoria para leer o escribir.
 - **Writeback (WB)**: si es necesario, se almacena un resultado en un registro.
 
-Veremos en nuestro procesador:
 
 # Ejecución de una instrucción: ld/sd (Tipo I)
 
@@ -86,6 +85,9 @@ Donde tenemos:
 
 ![](./figuras/tabla_inst_1.png)
 
+> En el libro se usa como ejemplo RISC-V de 64 bits.
+
+
 # Diseño ruta de datos y de control
 
 Los pasos a realizar son:
@@ -116,8 +118,9 @@ Se debe leer operandos/registros fuente, calcular dirección de memoria usando e
 
 En el caso de:
 - Load: Leer memoria de datos y actualizar registro.
-- Store: Escribir en memoria de datos el valor del resgistro.
+- Store: Escribir en memoria de datos el valor del registro.
 
+> Recibo para extender el signo la instrucción completa, por eso el bus especifica 32, dentro del proceso de extensión solo selecciona los 12 bits necesarios. 
 
 ![](figuras/tipo-ls.png)
 
@@ -155,40 +158,71 @@ Vamos a tener dos unidades de control:
 - la **Unidad de control global** que decodifica el campo *Opcode* y realiza una configuración global de la ruta de datos.
 - la **Unidad de control local a la ALU** que se encarga de decodifica los campos *Funct* y genera la señal *ALU Control* dependiendo de la operación concreta a realizar
 
-En resumen, decodificación multinivel donde:
-La unidad de control global decodifica la instrucción leyendo su opcode y la unidad de control local de la ALU realiza una segunda decodificación leyendo el o los campos Funct.
+En resumen tenemos una decodificación multinivel donde: la unidad de control global decodifica la instrucción leyendo su opcode y la unidad de control local de la ALU realiza una segunda decodificación leyendo el o los campos Funct.
 
-En la unidad de control global, las señales de control derivan de la instrucción:
 
-![](figuras/alu-1.png)
+Dependiendo de la clase de instrucción, la ALU deberá realizar una de estas cuatro funciones:
+- para cargar y almacenar instrucciones, usamos la ALU para calcular la dirección de memoria mediante la suma. 
+- Para las instrucciones de tipo R, la ALU necesita realizar una de las cuatro acciones *(Y, O, sumar o restar)*, dependiendo de
+el valor del campo funct7 de 7 bits (bits 31:25) y el campo funct3 de 3 bits (bits 14:12) en la instrucción. 
+- Para el salto condicional si la instrucción es igual, la ALU resta dos operandos y prueba para ver si el resultado es 0.
 
-La Entrada es el Opcode, las salidas generan los valores adecuados para
-las diferentes señales de control por medio de una **tabla de verdad**: puntos de control en la ruta de datos.
-
-> PCSrc no se genera directamente, cuando la instrucción es un salto *(Branch = 1)*
-se debe realizar **Branch AND resultado** = evaluación de condición.
-
-Las señales de control permanecen activas
-hasta que finaliza el ciclo. Cuando llega una nueva subida del flanco de reloj, se vuelve a comenzar el proceso.
-
-La unidad de control local si la instrucción es de tipo Load/Store se suma, 
-si la instrucción es de tipo se resta y si la instrucción es de tipo R va a depender del código de operación.
-
-Tenemos:
 
 ![](figuras/alu-c.png)
 
-Los dos bits de *ALUOp* derivan del *opcode*:
+Es posible generar la entrada de control de la ALU de 4 bits utilizando una pequeña unidad de control que tiene como entradas los campos **funct7** y **funct3** de la instrucción y un campo de control de 2 bits, que llamamos **ALUOp**. 
+
+**ALUOp** indica si la operación a realizar debe ser la suma *(00)*, la resta y probar si es cero *(01)*  o si debe ser determinada por la operación codificada en los campos funct7 y funct3 *(10)*.
+
+La salida de la unidad de control ALU es una señal de 4 bits que controla directamente la ALU generando una de las combinaciones de 4 bits mostradas anteriormente.
 
 ![](figuras/alu-c-1.png)
 
-Entrada compuesta por *ALUOp* y *Funct*.
+Este estilo de usar múltiples niveles de decodificación, es decir, la unidad de control principal genera los bits ALUOp, que luego se utilizan como entrada a la unidad de control de la ALU que genera las señales reales para controlar la ALU, es una técnica de implementación común. 
 
-Salidas: Genera la señal ALUControl por
-medio de una tabla de verdad: puntos de
-control en la ruta de datos.
+El uso de múltiples niveles de control puede reducir el tamaño de la unidad de control principal. El uso de varias unidades de control más pequeñas también puede reducir potencialmente la latencia de la unidad de control. 
 
-Las señales de control permanecen activas
+Estas optimizaciones son importantes, ya que la latencia de la unidad de control es a menudo un factor crítico para determinar el tiempo del ciclo del reloj.
+
+Hay varias formas diferentes de implementar el mapeo desde el campo ALUOp de 2 bits y los campos de función a los cuatro bits de control de operación de ALU. Debido a que solo una pequeña cantidad de los posibles valores de los campos de función son de interés y los campos de función se usan solo cuando los bits de ALUOp son iguales a 10, podemos usar una pequeña parte de la lógica que reconoce el subconjunto de valores posibles y genera las señales de control de la ALU.
+
+La tabla de verdad resultante es:
+
+![](figuras/alu-tv.png)
+
+
+En la unidad de control global, las señales de control derivan de las instrucciones que tienen el siguiente formato:
+
+![](figuras/alu-1.png)
+
+Que podemos ver:
+
+- El campo de código de operación siempre está en los bits 6: 0. Dependiendo del código de operación, el campo funct3 (bits 14:12) y el campo funct7 (bits 31:25) sirven como un campo de código de operación extendido.
+- El primer operando de registro siempre está en las posiciones de bit 19:15 (rs1) para el instrucciones de tipo R y de salto. Este campo también especifica el registro base
+para instrucciones de carga y almacenamiento.
+- El segundo operando de registro siempre está en las posiciones de bit 24:20 (rs2) para las instrucciones de tipo R e instrucciones de salto. Este campo también especifica el registro operando que se copia a la memoria para almacenar instrucciones.
+- Otro operando también puede ser un desplazamiento de 12 bits para instrucciones de salto o de almacenamiento o carga.
+- El registro de destino siempre está en las posiciones de bit 11: 7 (rd) para las instrucciones de tipo R y de carga.
+
+> Principio de diseño: la simplicidad favorece la regularidad
+
+En el procesador tenemos 6 señales de control, las cuales son:
+
+![](figuras/sc.png)
+
+
+Las ocho señales de control *(seis anteriores y dos para ALUOp)* se configuran en función de las señales de entrada a la unidad de control, que son los bits de código de operación 6:0.
+
+Donde se deben activar de acuerdo a la siguiente tabla:
+
+![](figuras/sc-tabla.png)
+
+Resultando en la siguiente tabla de verdad:
+
+![](figuras/sc-tv.png)
+
+
+> Las señales de control permanecen activas
 hasta que finaliza el ciclo. Cuando llega una nueva subida del flanco de reloj, se vuelve a comenzar el proceso.
 
 # Ruta de Datos y Unidad de Control del procesador monociclo
@@ -211,7 +245,6 @@ En el caso de Beq:
 
 La instrucción más lenta determina la
 duración del ciclo de reloj, no es posible variar el período para diferentes instrucciones, por ende viola el principio de diseño: Hacer el caso común rápido.
-
 
 > Mejora del rendimiento por medio del
 procesador multiciclo. 
