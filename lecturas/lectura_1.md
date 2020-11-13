@@ -37,7 +37,7 @@ Z = X Y * W U * +
 
 Veamos como se puede hacer una asignación en los distintos tipos de arquitecturas:
 
-Tomemos en cuenta la siguiente instrucción: **Z = X * Y**
+Tomemos en cuenta la siguiente instrucción: **Z = X * Y**, donde Z, X e Y son posiciones de memoria.
 
 - Stack:
   
