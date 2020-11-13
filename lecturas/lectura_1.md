@@ -78,5 +78,8 @@ Tomemos en cuenta la siguiente instrucción: **Z = X * Y**
     mult Z, X, Y
     ```
 
-> Como pueden implementar: **Z = X * Y + W * U**
+## Tarea
 
+Como pueden implementar: **Z = X * Y + W * U**
+
+> Lean el material complementario.

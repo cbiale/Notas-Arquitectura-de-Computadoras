@@ -162,10 +162,10 @@ En resumen tenemos una decodificación multinivel donde: la unidad de control gl
 
 
 Dependiendo de la clase de instrucción, la ALU deberá realizar una de estas cuatro funciones:
-- para cargar y almacenar instrucciones, usamos la ALU para calcular la dirección de memoria mediante la suma. 
+- para cargar y almacenar datos, usamos la ALU para calcular la dirección de memoria mediante la suma. 
 - Para las instrucciones de tipo R, la ALU necesita realizar una de las cuatro acciones *(Y, O, sumar o restar)*, dependiendo de
 el valor del campo funct7 de 7 bits (bits 31:25) y el campo funct3 de 3 bits (bits 14:12) en la instrucción. 
-- Para el salto condicional si la instrucción es igual, la ALU resta dos operandos y prueba para ver si el resultado es 0.
+- Para el salto condicional si la instrucción es igual (beq), la ALU resta dos operandos y prueba para ver si el resultado es 0.
 
 
 ![](figuras/alu-c.png)
