@@ -141,13 +141,21 @@ En arquitecturas memoria-memoria: Código más compacto, menos instrucciones. La
 
 ## Ordenación
 
-La mayoría de las máquinas están direccionadas por bytes. Proporcionan acceso a bytes *(8 bits)*, medias palabras *(16 bits)*, palabras *(32 bits)* y dobles palabras *(64 bits)*..
+La mayoría de las máquinas están direccionadas por bytes, por ende es la unidad mínima de información accesible en una memoria. Proporcionan acceso a bytes *(8 bits)*, medias palabras *(16 bits)*, palabras *(32 bits)* y dobles palabras *(64 bits)*.
 
-**Little Endian**: de comienzo por el extremo pequeño. Coloca el byte menos significativo en la posición más significativa de la palabra. La dirección de un dato es la del byte menos significativo.
+> En RISC-V de 32 bits, las direcciones van desde la 0x00000000 hasta la 0xFFFFFFFF. Cada una de ellas se refiere a 1 byte
 
-**Big Endian**: de comienzo por el extremo grande. Coloca el byte menos significativo en la posición menos significativa de la palabra. La dirección de un dato es la del byte más significativo.
+Ahora bien, ¿qué ocurre cuando queremos almacenar un dato mayor que un byte? *(una media palabla, una palabra o doble palabra)*, en ese caso hay que utilizar varias posiciones de memoria. Así, para guardar la media palabra 0xBAC0 en la memoria, necesitaremos dos posiciones de memoria, una que contenga el byte de mayor peso *(0xBA)* y otra que contenga el byte de menor peso *(0xC0)*
 
-**Middle Endian**: arquitectura capaz de trabajar con ambas ordenaciones.
+Supongamos que queremos almacenar cada media palabra de 0xBAC0 a partir de la dirección 0x10010000, tenemos dos posibilidades: Almacenar 0xBA en 0x10010000 y 0xC0 en 0x10010001, ó hacerlo en el orden contrario: almacenar 0xC0 en 0x10010000 y 0xBA en 0x10010001.
+
+La primera posibilidad se denomina **Big Endian**. El byte de mayor peso se almacena primero *(dirección menor)* y luego el de menor peso en la siguiente dirección *(que es mayor)*. La otra posiblidad se denomina  **Little Endian**, es la que usan los RISC-V. El byte de menor peso se almacena en la dirección menor *(la primera dirección)*.
+
+> **Little Endian**: de comienzo por el extremo pequeño. La dirección de un dato es la del byte menos significativo.
+>
+> **Big Endian**: de comienzo por el extremo grande. La dirección de un dato es la del byte más significativo.
+>
+> **Middle Endian**: arquitectura capaz de trabajar con ambas ordenaciones.
 
 Ejemplo: el valor hexadecimal **0x4A3B2C1D** se codificaría en memoria en la siguiente secuencia:
 
@@ -159,16 +167,13 @@ Ejemplo: el valor hexadecimal **0x4A3B2C1D** se codificaría en memoria en la si
 
 ## Alineamiento
 
-En RISC-V, la información almacenada debe
-comenzar en direcciones múltiplo del tamaño de la
-información almacenada. En
+En RISC-V, la información almacenada debe comenzar en direcciones múltiplo del tamaño de la información almacenada. Estos accesos deben estar alineados, es decir, un acceso a una información de *n* bytes en la dirección del byte *B* está alineado si: **B módulo s = 0**
 
-Estos accesos deben estar alineados, es decir, un
-acceso a una información de *n* bytes en la dirección del byte *B* está alineado si: **B módulo s = 0**
+Estas restricciones de alineamiento se deben a que las memorias, físicamente, están diseñadas para hacer accesos alineados. Un acceso no alineado o mal alineado, supone varios accesos alineados a la memoria.
 
-Estas restricciones de alineamiento se deben a que
-las memorias, físicamente, están diseñadas para
-hacer accesos alineados. Un acceso no alineado o mal alineado, supone varios accesos alineados a la memoria.
+Debemos considerar que El tipo más básico de memoria es el que físicamente sólo almacenan bytes. Decimos que son memorias con anchura de 1 byte. Estas son las memorias utilizadas en muchos de los ordenadores de 8 bits de los años 80. En las memorias con anchura de 1 byte, si queremos leer o escribir un dato mayor, hay que hacer varios accesos. 
+
+> Por ejemplo, para leer un dato de 16 bits (media palabra) son necesarios dos accesos de lectura a la memoria. Físicamente la memoria sólo te puede devolver datos de 8 bits. Esto cambia se se modifica la anchura a por ejemplo 16 bits.
 
 ## Modos de direccionamiento
 
