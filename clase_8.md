@@ -2,13 +2,13 @@
 
 Las arquitecturas basadas en Von Neumann presentan limitaciones técnicas en la velocidad de proceso que pueden alcanzar.
 
+
 Se deben buscar arquitecturas alternativas que utilizan varias unidades de procesamiento. 
 
-Podemos implementar **paralelismo interno** *(con una única CPU)* usando 
-**segmentación**, en este caso no hay hardware replicado.
 
-O podemos implementar **paralelismo explícito** *(con varias CPUs)* mediante 
-SIMD, MISD o MIMD.
+Podemos implementar **paralelismo interno** *(con una única CPU)* usando 
+**segmentación**, en este caso no hay hardware replicado. O podemos implementar **paralelismo explícito** *(con varias CPUs)* mediante  SIMD, MISD o MIMD.
+
 
 Ambas técnicas están orientadas a mejorar el rendimiento, es decir, el número de instrucciones realizadas por unidad de tiempo, incrementando el número de
 módulos hardware que operan simultáneamente. 
