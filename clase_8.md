@@ -235,3 +235,116 @@ Veamos cada etapa:
 Esto resulta en:
 
 ![](./figuras/pipeline_control.png)
+
+## Consideraciones
+
+El ISA del procesador RISC-V se diseñó para ser ejecutado en un pipeline:
+1. Todas las instrucciones tienen la misma longitud, lo que facilita las etapas IF y ID.
+2. RISC-V solo tiene unos pocos formatos de instrucciones: encontrar los registros fuente en los mismos campos permite la
+lectura de los operandos al mismo tiempo que se decodifica la instrucción. En caso contrario necesitaríamos partir en dos la
+etapa ID.
+3. Operandos en memoria solo existen en las instrucciones load/store, por lo que podemos utilizar la etapa de ejecución para calcular la dirección de memoria
+4. Los operandos deben estar alineados en memoria, por lo que solo se necesita un acceso a memoria
+
+> En general, el ISA del RISC-V está diseñado para evitar riesgos en el pipeline.
+
+# Riesgos en el cauce o pipeline
+
+Son aquellas situaciones que hacen que no se pueda continuar con la ejecución de la siguiente instrucción en el siguiente ciclo de reloj:
+
+- **Riesgos Estructurales**: El recurso está ocupado.
+- **Riesgos de Datos**: Se debe esperar hasta que la instrucción previa complete la lectura/escritura de datos.
+- **Riesgos de Control**: Decidir la acción de control depende de la instrucción previa.
+
+### Riesgos estructurales
+
+Se producen cuando dos o más instrucciones necesitan utilizar el mismo recurso hardware al mismo tiempo
+
+- Etapas IF y MEM: acceso al módulo de memoria.
+- Etapas ID y WB: acceso al banco de registros.
+
+Se soluciona al duplicar los recursos hardware que provocan los conflictos, segmentarlos o realizar turnos para acceder a ellos.
+
+En el caso de la memoria consisten en separar entre memoria de instrucciones y datos.
+
+En el caso del banco de registros se puede: realizar turnos para leer y escribir, escrituras en la primera mitad de los ciclos de reloj y lecturas en la segunda mitad.
+
+### Riesgos de datos
+
+Dos o más instrucciones presentan dependencias de datos entre sí que podrían llevar a la obtención de resultados erróneos debido a una alteración en la secuencia de instrucciones.
+
+Los tipos de dependencias son:
+- **RAW**: Read After Write (representa un riesgo real).
+- **WAR**: Write After Read.
+- **WAW**: Write After Write.
+
+Se debe esperar hasta que la instrucción previa complete la lectura/escritura de datos, por ejemplo:
+
+```
+add x19, x0, x1
+sub x2, x19, x3
+```
+
+Podemos ver dependencia entre la escritura de `x19` y la lectura en la siguiente instrucción.
+
+![](./figuras/riesgo_de_datos.png)
+
+Existen distintas soluciones:
+
+### Solución software mediante prevención. 
+
+Mecanismos de solución mediante hardware:
+1. Detener el pipeline, **paradas en el
+cauce**: se incrementa mucho el CPI
+2. Adelantamiento, **data fordwarding**:  No se incrementa tanto el CPI.
+
+La **solución software** es responsabilidad del compilador: 
+- No resuelve el riesgo, sino que lo evita.
+- Se trata de reordenar el código.
+
+![](./figuras/riesgo_de_datos_sol_software.png)
+
+Mediante esto se logra retrasar la ejecución de la instrucción dependiente un
+número **K** de etapas hasta que desaparezca el problema.
+
+Se debe encontrar **K** instrucciones que se pueden ejecutar después de la instrucción que genera la dependencia sin variar la estructura lógica del programa.
+
+Cuando no se pueden reordenar las instrucciones sin alterar la lógica del programa, entonces se deben insertar instrucciones **NOP**.
+
+![](./figuras/riesgo_datos_solucion_software_2.png)
+)
+
+> La prevención no requiere de hardware adicional pero a expensas de un compilador más complejo y una pérdida de tiempo si es necesario insertar instrucciones `NOP`.
+
+### RAW: solución hardware, detener el pipeline
+
+Hardware adicional para detener la actividad en las etapas necesarias del pipeline hasta que desaparezca la dependencia.
+
+Primero se detecta la dependencia y después se detiene el pipeline a partir de la instrucción dependiente hasta que desaparece la dependencia.
+
+![](./figuras/raw_1.png)
+
+### RAW: solución hardware, adelantamiento
+
+Técnica hardware de adelantamiento (data
+forwarding):
+- Pasar el resultado obtenido en una instrucción a las instrucciones que lo necesitan como operando.
+- Las instrucciones los reciben en cuanto está disponible. 
+
+Fácil de implementar, aunque no siempre se
+puede aplicar.
+
+Se debe identificar todos los posibles adelantamientos necesarios para el repertorio en cuestión.
+
+Para ello hay adelantar el dato cuando esté disponible, es decir no esperar hasta que sea almacenado en un registro. Para ello se necesitan conexiones extra en la ruta de datos.
+
+![](./figuras/adelantamiento_hw.png)
+
+No siempre se pueden evitar las detenciones, incluso usando adelantamiento, por ejemplo:
+
+![](./figuras/adelantamiento_hw_2.png)
+
+
+**Seguimos en la clase que viene...**
+
+
