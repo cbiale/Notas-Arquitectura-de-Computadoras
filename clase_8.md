@@ -189,7 +189,7 @@ A continuación vamos a ver los pasos para ejecutar la instrucción load o store
   
     ![](./figuras/pipeline_mem_st.png)
 
-- MEM para store:
+- WB para store:
   
     ![](./figuras/pipeline_wb_st.png)
 
