@@ -1,6 +1,6 @@
 # Segmentación
 
-Las arquitecturas basadas en Von Neumann presentan limitaciones técnicas en la velocidad de proceso que pueden alcanzar.
+Las arquitecturas basadas en Von Neumann o Harvard presentan limitaciones técnicas en la velocidad de proceso que pueden alcanzar.
 
 
 Se deben buscar arquitecturas alternativas que utilizan varias unidades de procesamiento. 
