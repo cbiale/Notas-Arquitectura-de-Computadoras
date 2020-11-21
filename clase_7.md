@@ -4,12 +4,7 @@
 
 Estudiaremos técnicas para implementar la ruta de datos y de control al construir un procesador.
 
-Examinaremos dos implementaciones RISC-V:
-- procesador monociclo
-- procesador multiciclo
-
-
-Nos centraremos en el estudio de una arquitectura RISC-V simplificada, denominada **nanoRISC-V**, con las siguientes instrucciones:
+Examinaremos un procesador monociclo RISC-V de 64 bits *(En laboratorio usan un procesador de 32 bits)*. Nos centraremos en el estudio de una arquitectura RISC-V simplificada, denominada **nanoRISC-V**, con las siguientes instrucciones:
 - Referencia  a memoria: ld (I) , sd (I)
 - Aritmético/lógicas: add , sub , and , or (R)
 - Transferencia de control: beq (SB)
