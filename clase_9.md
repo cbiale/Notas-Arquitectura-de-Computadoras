@@ -55,9 +55,9 @@ Se debe comparar el destino de las instrucciones más antiguas en el pipeline co
 > ¡Debe ignorar las escrituras en x0!
 
 Tres tipos de adelantamiento o reenvío:
-- Reenvío desde registros EXE/MEM a la etapa EXE 
-- Reenvío desde registro MEM/WB a la etapa EXE
-- Derivación al archivo de registro
+- Reenvío desde registros EX/MEM a la etapa EX 
+- Reenvío desde registro MEM/WB a la etapa EX
+- Derivación al banco de registro
 
 Como se implementa:
 
