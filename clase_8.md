@@ -278,6 +278,13 @@ Los tipos de dependencias son:
 - **WAR**: Write After Read.
 - **WAW**: Write After Write.
 
+
+> En castellano:
+> - Lectura después de escritura (LDE) 
+> - Escritura después de lectura (EDL)
+> - Escritura después de escritura (EDE)
+
+
 Se debe esperar hasta que la instrucción previa complete la lectura/escritura de datos, por ejemplo:
 
 ```
@@ -291,12 +298,10 @@ Podemos ver dependencia entre la escritura de `x19` y la lectura en la siguiente
 
 Existen distintas soluciones:
 
-### Solución software mediante prevención. 
-
-Mecanismos de solución mediante hardware:
-1. Detener el pipeline, **paradas en el
-cauce**: se incrementa mucho el CPI
-2. Adelantamiento, **data fordwarding**:  No se incrementa tanto el CPI.
+- Solución software mediante prevención. 
+- Mecanismos de solución mediante hardware:
+  1. Detener el pipeline, **paradas en el cauce**: se incrementa mucho el CPI
+  2. Adelantamiento, **data fordwarding**:  No se incrementa tanto el CPI.
 
 La **solución software** es responsabilidad del compilador: 
 - No resuelve el riesgo, sino que lo evita.
@@ -331,8 +336,7 @@ forwarding):
 - Pasar el resultado obtenido en una instrucción a las instrucciones que lo necesitan como operando.
 - Las instrucciones los reciben en cuanto está disponible. 
 
-Fácil de implementar, aunque no siempre se
-puede aplicar.
+Fácil de implementar, aunque no siempre se puede aplicar.
 
 Se debe identificar todos los posibles adelantamientos necesarios para el repertorio en cuestión.
 

@@ -227,6 +227,8 @@ hasta que finaliza el ciclo. Cuando llega una nueva subida del flanco de reloj, 
 
 # Ruta de Datos y Unidad de Control del procesador monociclo
 
+Ruta del procesador monociclo:
+
 ![](figuras/ruta-monociclo.png)
 
 En el caso de tipo R:
