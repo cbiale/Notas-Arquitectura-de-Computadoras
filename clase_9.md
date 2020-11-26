@@ -75,9 +75,11 @@ Lógica de detección:
 
 ```
 forward = 
-(EX/MEM.WE && EX/MEM.Rd != 0 && 
-ID/EX.Rs1 == EX/MEM.Rd) || 
-ID/EX.Rs2 == EX/MEM.Rd)
+(
+ EX/MEM.WE && EX/MEM.Rd != 0 && 
+ (ID/EX.Rs1 == EX/MEM.Rd || 
+  ID/EX.Rs2 == EX/MEM.Rd)
+)
 ```
 
 ## Caso de MEM/WB a EX:
