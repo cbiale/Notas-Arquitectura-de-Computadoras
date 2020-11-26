@@ -136,7 +136,7 @@ Los datos que fluyen de derecha a izquierda no afectan la instrucción actual; e
 
 Tengan en cuenta que el primer flujo de datos de derecha a izquierda puede conducir a **peligros de datos** y el segundo conduce a **peligros de control**.
 
-Los registros del  pipeline, separan cada etapa de la tubería.
+Los registros del  pipeline, separan cada etapa en el mismo.
 
 Están etiquetados por las etapas que separan.
 
